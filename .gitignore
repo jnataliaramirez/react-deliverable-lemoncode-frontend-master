@@ -1,0 +1,43 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# TypeScript
+*.tsbuildinfo
+
+# Sass
+*.css.map
+*.sass.cache
+
+# IDE/Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Build output
+/dist/
+
+# Testing
+/coverage/
+/.nyc_output/
+
+# Environment
+.env
+
+# Logs
+*.log
+
+# Dependency directories
+/jspm_packages/
+/bower_components/
+
+# Misc
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
