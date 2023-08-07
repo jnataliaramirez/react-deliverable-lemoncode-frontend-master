@@ -26,7 +26,7 @@ export const ListPage: React.FC = () => {
     <>
       <h2>Hello from List page</h2>
 
-      <Searcher updateName={updateName} />
+      <Searcher organization={organization} updateName={updateName} />
 
       <div className="list-user-list-container">
         <span className="list-header">Avatar</span>

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Searcher = ({ updateName }) => {
+export const Searcher = ({ organization, updateName }) => {
   const handleKeypress = (ev) => {
     if (ev.keyCode === 13) {
       updateName(ev.target.value);
@@ -9,19 +9,18 @@ export const Searcher = ({ updateName }) => {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    
+    updateName(ev.target.organization.value);
   };
 
   return (
-    <form className="searcher-container">
+    <form onSubmit={handleSubmit} className="searcher-container">
       <input
         type="search"
         id="organization"
         name="organization"
-        placeholder="lemoncode"
         onKeyDown={handleKeypress}
       />
-      <button type="submit" onClick={handleSubmit}>
+      <button type="submit">
         Buscar
       </button>
     </form>
