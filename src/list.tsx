@@ -10,18 +10,23 @@ interface MemberEntity {
 
 export const ListPage: React.FC = () => {
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
+  const [organization, setOrganization] = React.useState<string>("lemoncode");
+
+  const updateName = (name: string) => {
+    setOrganization(name);
+  };
 
   React.useEffect(() => {
-    fetch(`https://api.github.com/orgs/lemoncode/members`)
+    fetch(`https://api.github.com/orgs/${organization}/members`)
       .then((response) => response.json())
       .then((json) => setMembers(json));
-  }, []);
+  }, [organization]);
 
   return (
     <>
       <h2>Hello from List page</h2>
 
-      <Searcher />
+      <Searcher updateName={updateName} />
 
       <div className="list-user-list-container">
         <span className="list-header">Avatar</span>
