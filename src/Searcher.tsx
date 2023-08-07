@@ -18,7 +18,8 @@ export const Searcher = ({ organization, updateName }) => {
         type="search"
         id="organization"
         name="organization"
-        onKeyDown={handleKeypress}
+        defaultValue={organization}
+        onKeyUp={handleKeypress}
       />
       <button type="submit">
         Buscar
