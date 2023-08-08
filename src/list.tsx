@@ -10,26 +10,12 @@ interface MemberEntity {
 
 export const ListPage: React.FC = () => {
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
-  const [organization, setOrganization] = React.useState<string>("");
-
-  console.log("organization", organization);
+  const [organization, setOrganization] = React.useState<string>("lemoncode");
 
   React.useEffect(() => {
-    setOrganization(window.localStorage.getItem("organization"));
-  }, []);
-
-  React.useEffect(() => {
-    window.localStorage.setItem("organization", organization);
-
-    if (organization === "") {
-      fetch(`https://api.github.com/orgs/lemoncode/members`)
-        .then((response) => response.json())
-        .then((json) => setMembers(json));
-    } else {
-      fetch(`https://api.github.com/orgs/${organization}/members`)
-        .then((response) => response.json())
-        .then((json) => setMembers(json));
-    }
+    fetch(`https://api.github.com/orgs/${organization}/members`)
+      .then((response) => response.json())
+      .then((json) => setMembers(json));
   }, [organization]);
 
   const updateName = (name: string) => {
