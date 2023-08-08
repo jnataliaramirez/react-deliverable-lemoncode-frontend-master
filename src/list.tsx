@@ -31,14 +31,16 @@ export const ListPage: React.FC = () => {
         <span className="list-header">Avatar</span>
         <span className="list-header">Id</span>
         <span className="list-header">Name</span>
-        {members.map((member) => (
-          <>
-            <img src={member.avatar_url} />
-            <span>{member.id}</span>
-            <Link to={`/detail/${member.login}`}>{member.login}</Link>
-          </>
-        ))}
       </div>
+      {members.map((member) => (
+        <span key={member.id} className="rapido">
+          <img src={member.avatar_url} />
+          <p>{member.id}</p>
+          <p>
+            <Link to={`/detail/${member.login}`}>{member.login}</Link>
+          </p>
+        </span>
+      ))}
       <Link to="/detail">Navigate to detail page</Link>
     </>
   );
