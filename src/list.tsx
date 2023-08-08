@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Searcher } from "./Searcher";
+import { MyContext } from "./context";
 
 interface MemberEntity {
   id: string;
@@ -9,8 +10,10 @@ interface MemberEntity {
 }
 
 export const ListPage: React.FC = () => {
+  const myContext = React.useContext(MyContext);
+  const organization = myContext.organization;
+  
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
-  const [organization, setOrganization] = React.useState<string>("lemoncode");
 
   React.useEffect(() => {
     fetch(`https://api.github.com/orgs/${organization}/members`)
@@ -18,15 +21,11 @@ export const ListPage: React.FC = () => {
       .then((json) => setMembers(json));
   }, [organization]);
 
-  const updateName = (name: string) => {
-    setOrganization(name);
-  };
-
   return (
     <>
       <h2>Hello from List page</h2>
 
-      <Searcher organization={organization} updateName={updateName} />
+      <Searcher />
 
       <div className="list-user-list-container">
         <span className="list-header">Avatar</span>

@@ -1,15 +1,20 @@
 import React from "react";
+import { MyContext } from "./context";
 
-export const Searcher = ({ organization, updateName }) => {
+export const Searcher = () => {
+  const myContext = React.useContext(MyContext);
+  const organization = myContext.organization;
+  const setOrganization = myContext.setOrganization;
+
   const handleKeypress = (ev) => {
     if (ev.keyCode === 13) {
-      updateName(ev.target.value);
-    };
+      setOrganization(ev.target.value);
+    }
   };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    updateName(ev.target.organization.value);
+    setOrganization(ev.target.organization.value);
   };
 
   return (
@@ -21,9 +26,7 @@ export const Searcher = ({ organization, updateName }) => {
         defaultValue={organization}
         onKeyUp={handleKeypress}
       />
-      <button type="submit">
-        Buscar
-      </button>
+      <button type="submit">Buscar</button>
     </form>
   );
 };
