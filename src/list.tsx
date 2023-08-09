@@ -4,7 +4,13 @@ import { Searcher } from "./Searcher";
 import { MyContext } from "./context";
 import Typography from "@mui/material/Typography";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import { fontGrid } from "@mui/material/styles/cssUtils";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 interface MemberEntity {
   id: string;
@@ -35,24 +41,37 @@ export const ListPage: React.FC = () => {
           Lista de miembros de la organización: {organization}
         </Typography>
       </Grid2>
-      
+
       <Searcher />
 
-      <div className="list-user-list-container">
-        <span className="list-header">Avatar</span>
-        <span className="list-header">Id</span>
-        <span className="list-header">Name</span>
-      </div>
-      {members.map((member) => (
-        <span key={member.id} className="rapido">
-          <img src={member.avatar_url} />
-          <p>{member.id}</p>
-          <p>
-            <Link to={`/detail/${member.login}`}>{member.login}</Link>
-          </p>
-        </span>
-      ))}
-      <Link to="/detail">Navigate to detail page</Link>
+      <TableContainer component={Paper} elevation={4} sx={{ mt: 4 }}>
+        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Avatar</TableCell>
+              <TableCell>Id</TableCell>
+              <TableCell>Name</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {members.map((member) => (
+              <TableRow
+                key={member.id}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row">
+                  <img src={member.avatar_url} />
+                </TableCell>
+                <TableCell>{member.id}</TableCell>
+                <TableCell>
+                  <Link to={`/detail/${member.login}`}>{member.login}</Link>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+
     </>
   );
 };
