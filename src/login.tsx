@@ -18,7 +18,7 @@ export const LoginPage: React.FC = () => {
     if (username === "admin" && password === "test") {
       navigate("/list");
     } else {
-      alert("User / password not valid, psst... admin / test");
+      alert("Usuario / contraseña no valido, psst... admin / test");
     }
   };
 
@@ -61,7 +61,7 @@ export const LoginPage: React.FC = () => {
               <div>
                 <TextField
                   id="password"
-                  label="Contraseña"
+                  label="Contraseña:"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
