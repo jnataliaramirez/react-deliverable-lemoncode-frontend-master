@@ -21,6 +21,8 @@ export const ListPage: React.FC = () => {
       .then((json) => setMembers(json));
   }, [organization]);
 
+  console.log(members.length)
+
   return (
     <>
       <h2>Hello from List page</h2>
