@@ -11,7 +11,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { ListPagination } from "./ListPagination";
+import { Stack } from "@mui/system";
+import { Pagination } from "@mui/material";
+import { getMembers } from "./api";
 
 interface MemberEntity {
   id: string;
@@ -25,11 +27,33 @@ export const ListPage: React.FC = () => {
 
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
 
+  const pageSize: number = 6;
+
+  const [numberPagination, setNumberPagination] = React.useState<any>({
+    count: 0,
+    from: 0,
+    to: pageSize,
+  });
+
+  // Dividir: una llamada a todos los members, otra para la paginación
   React.useEffect(() => {
-    fetch(`https://api.github.com/orgs/${organization}/members`)
-      .then((response) => response.json())
-      .then((json) => setMembers(json));
-  }, [organization]);
+    const fetchMembers = async (organization) => {
+      const membersRes = await getMembers(organization);
+      setNumberPagination({ ...numberPagination, count: membersRes.length });
+      setMembers(membersRes.slice(numberPagination.from, numberPagination.to));
+    };
+    fetchMembers(organization);
+  }, [organization, numberPagination.from, numberPagination.to]);
+
+  const handlePaginationChange = (event, page: number) => {
+    const from = (page - 1) * pageSize;
+    const to = (page - 1) * pageSize + pageSize;
+
+    setNumberPagination({ ...numberPagination, from: from, to: to });
+  };
+
+  console.log("members", members);
+  console.log("numberPagination", numberPagination);
 
   return (
     <>
@@ -44,7 +68,16 @@ export const ListPage: React.FC = () => {
       </Grid2>
 
       <Searcher />
-      <ListPagination />
+      {/* <ListPagination /> */}
+      <Grid2 display="flex" justifyContent="center" marginTop="2rem">
+        <Stack spacing={2}>
+          <Pagination
+            onChange={handlePaginationChange}
+            count={Math.ceil(numberPagination.count / pageSize)}
+            color="primary"
+          />
+        </Stack>
+      </Grid2>
 
       <TableContainer component={Paper} elevation={4} sx={{ mt: 4 }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -73,7 +106,6 @@ export const ListPage: React.FC = () => {
           </TableBody>
         </Table>
       </TableContainer>
-
     </>
   );
 };
