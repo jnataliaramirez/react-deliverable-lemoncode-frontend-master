@@ -28,3 +28,7 @@ img {
   gap: 20px;
 }
 
+/* MUI  */
+.button__back:visited{
+  color: white;
+}

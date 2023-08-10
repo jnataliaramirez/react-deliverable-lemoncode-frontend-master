@@ -11,6 +11,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { ListPagination } from "./ListPagination";
 
 interface MemberEntity {
   id: string;
@@ -43,6 +44,7 @@ export const ListPage: React.FC = () => {
       </Grid2>
 
       <Searcher />
+      <ListPagination />
 
       <TableContainer component={Paper} elevation={4} sx={{ mt: 4 }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
