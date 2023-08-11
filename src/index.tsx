@@ -1,8 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { App } from "./app";
+import { App } from "./App";
 import CssBaseline from "@mui/material/CssBaseline";
-import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 
 const container = document.getElementById("root");

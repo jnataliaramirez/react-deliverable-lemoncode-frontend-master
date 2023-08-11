@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import TextField from "@mui/material/TextField";
+import { Title } from "../components/Title";
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -30,9 +31,7 @@ export const LoginPage: React.FC = () => {
       alignItems="center"
       height="100vh"
     >
-      <Typography component="h2" color="primary" sx={{ fontSize: 24 }}>
-        ¡Hola! Bienvenid@ a la lista de GitHub
-      </Typography>
+      <Title>¡Hola! Bienvenid@ a la lista de GitHub</Title>
 
       <Card
         sx={{

@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { MemberEntity, MyContext } from "../context";
+import { MyContext } from "../context";
 
 export const MemberCard = () => {
   const { id } = useParams();
