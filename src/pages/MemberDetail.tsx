@@ -4,9 +4,9 @@ import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
+import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { CardActions } from "@mui/material";
 
 export const DetailPage: React.FC = () => {
   const { id } = useParams();

@@ -11,9 +11,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Stack } from "@mui/system";
-import { Pagination } from "@mui/material";
 import { getMembers } from "./api";
+import { ListPagination } from "./ListPagination";
 
 interface MemberEntity {
   id: string;
@@ -24,16 +23,10 @@ interface MemberEntity {
 export const ListPage: React.FC = () => {
   const myContext = React.useContext(MyContext);
   const organization = myContext.organization;
+  const numberPagination = myContext.pag;
+  const setNumberPagination = myContext.setPag;
 
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
-
-  const pageSize: number = 6;
-
-  const [numberPagination, setNumberPagination] = React.useState<any>({
-    count: 0,
-    from: 0,
-    to: pageSize,
-  });
 
   // Dividir: una llamada a todos los members, otra para la paginación
   React.useEffect(() => {
@@ -44,16 +37,6 @@ export const ListPage: React.FC = () => {
     };
     fetchMembers(organization);
   }, [organization, numberPagination.from, numberPagination.to]);
-
-  const handlePaginationChange = (event, page: number) => {
-    const from = (page - 1) * pageSize;
-    const to = (page - 1) * pageSize + pageSize;
-
-    setNumberPagination({ ...numberPagination, from: from, to: to });
-  };
-
-  console.log("members", members);
-  console.log("numberPagination", numberPagination);
 
   return (
     <>
@@ -68,16 +51,7 @@ export const ListPage: React.FC = () => {
       </Grid2>
 
       <Searcher />
-      {/* <ListPagination /> */}
-      <Grid2 display="flex" justifyContent="center" marginTop="2rem">
-        <Stack spacing={2}>
-          <Pagination
-            onChange={handlePaginationChange}
-            count={Math.ceil(numberPagination.count / pageSize)}
-            color="primary"
-          />
-        </Stack>
-      </Grid2>
+      <ListPagination />
 
       <TableContainer component={Paper} elevation={4} sx={{ mt: 4 }}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
