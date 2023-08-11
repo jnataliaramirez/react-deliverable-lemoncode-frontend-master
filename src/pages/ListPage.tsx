@@ -1,10 +1,10 @@
 import React from "react";
-import { MyContext } from "./context";
-import { getMembers } from "./api";
-import { ListPagination } from "./components/ListPagination";
-import { Searcher } from "./components/Searcher";
-import { ListTable } from "./components/ListTable";
-import { Title } from "./components/Title";
+import { MyContext } from "../context";
+import { getMembers } from "../api";
+import { ListPagination } from "../components/ListPagination";
+import { Searcher } from "../components/Searcher";
+import { ListTable } from "../components/ListTable";
+import { Title } from "../components/Title";
 
 export const ListPage: React.FC = () => {
   const myContext = React.useContext(MyContext);
