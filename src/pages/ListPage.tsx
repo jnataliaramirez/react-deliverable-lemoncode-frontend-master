@@ -5,6 +5,7 @@ import { ListPagination } from "../components/ListPagination";
 import { Searcher } from "../components/Searcher";
 import { ListTable } from "../components/ListTable";
 import { Title } from "../components/Title";
+import { Footer } from "../components/Footer";
 
 export const ListPage: React.FC = () => {
   const myContext = React.useContext(MyContext);
@@ -28,6 +29,7 @@ export const ListPage: React.FC = () => {
       <Searcher />
       <ListPagination />
       <ListTable />
+      <Footer />
     </>
   );
 };
