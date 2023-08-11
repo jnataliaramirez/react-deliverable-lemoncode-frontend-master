@@ -17,7 +17,12 @@ export const ListPagination: React.FC = () => {
     const from = (page - 1) * pageSize;
     const to = (page - 1) * pageSize + pageSize;
 
-    setNumberPagination({ ...numberPagination, from: from, to: to });
+    setNumberPagination({
+      ...numberPagination,
+      page: page,
+      from: from,
+      to: to,
+    });
   };
 
   return (
@@ -27,6 +32,7 @@ export const ListPagination: React.FC = () => {
           onChange={handlePaginationChange}
           count={Math.ceil(numberPagination.count / pageSize)}
           color="primary"
+          page={numberPagination.page}
         />
       </Stack>
     </Grid2>

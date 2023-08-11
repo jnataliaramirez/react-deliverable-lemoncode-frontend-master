@@ -7,6 +7,7 @@ export interface MemberEntity {
 }
 
 interface Pagination {
+  page: number;
   count: number;
   from: number;
   to: number;
@@ -29,6 +30,7 @@ export const MyContext = React.createContext<Context>({
   setMembers: (value) => {},
   pageSize: 0,
   pag: {
+    page: 1,
     count: 0,
     from: 0,
     to: 0,
@@ -43,6 +45,7 @@ export const MyContextProvider = (props) => {
 
   const pageSize: number = 6;
   const [pag, setPag] = React.useState<Pagination>({
+    page: 1,
     count: 0,
     from: 0,
     to: pageSize,
