@@ -4,13 +4,16 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
-export const ListPagination = () => {
+export const ListPagination: React.FC = () => {
   const myContext = React.useContext(MyContext);
   const pageSize = myContext.pageSize;
   const numberPagination = myContext.pag;
   const setNumberPagination = myContext.setPag;
 
-  const handlePaginationChange = (event, page: number) => {
+  const handlePaginationChange = (
+    event: React.ChangeEvent<unknown>,
+    page: number
+  ): void => {
     const from = (page - 1) * pageSize;
     const to = (page - 1) * pageSize + pageSize;
 

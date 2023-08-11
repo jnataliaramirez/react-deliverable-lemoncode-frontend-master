@@ -14,7 +14,7 @@ export const ListPage: React.FC = () => {
   const setNumberPagination = myContext.setPag;
 
   React.useEffect(() => {
-    const fetchMembers = async (organization) => {
+    const fetchMembers = async (organization: string) => {
       const membersRes = await getMembers(organization);
       setNumberPagination({ ...numberPagination, count: membersRes.length });
       setMembers(membersRes.slice(numberPagination.from, numberPagination.to));

@@ -9,7 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-export const ListTable = () => {
+export const ListTable: React.FC  = () => {
   const myContext = React.useContext(MyContext);
   const members = myContext.members;
 

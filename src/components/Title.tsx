@@ -2,7 +2,11 @@ import React from "react";
 import Typography from "@mui/material/Typography";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
-export const Title = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+export const Title: React.FC<Props> = ({ children }) => {
   return (
     <Grid2 display="flex" justifyContent="center">
       <Typography
