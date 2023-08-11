@@ -1,33 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Searcher } from "./Searcher";
 import { MyContext } from "./context";
 import Typography from "@mui/material/Typography";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import { getMembers } from "./api";
-import { ListPagination } from "./ListPagination";
-
-interface MemberEntity {
-  id: string;
-  login: string;
-  avatar_url: string;
-}
+import { ListPagination } from "./components/ListPagination";
+import { Searcher } from "./components/Searcher";
+import { ListTable } from "./components/ListTable";
 
 export const ListPage: React.FC = () => {
   const myContext = React.useContext(MyContext);
   const organization = myContext.organization;
-  const members = myContext.members;
   const setMembers = myContext.setMembers;
   const numberPagination = myContext.pag;
   const setNumberPagination = myContext.setPag;
-
 
   // Dividir: una llamada a todos los members, otra para la paginación
   React.useEffect(() => {
@@ -53,34 +38,7 @@ export const ListPage: React.FC = () => {
 
       <Searcher />
       <ListPagination />
-
-      <TableContainer component={Paper} elevation={4} sx={{ mt: 4 }}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Avatar</TableCell>
-              <TableCell>Id</TableCell>
-              <TableCell>Name</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {members.map((member) => (
-              <TableRow
-                key={member.id}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell component="th" scope="row">
-                  <img src={member.avatar_url} />
-                </TableCell>
-                <TableCell>{member.id}</TableCell>
-                <TableCell>
-                  <Link to={`/detail/${member.login}`}>{member.login}</Link>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <ListTable />
     </>
   );
 };

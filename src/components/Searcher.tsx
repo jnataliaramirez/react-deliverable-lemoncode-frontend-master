@@ -1,6 +1,6 @@
 import React from "react";
-import { MyContext } from "./context";
-import { Button, TextField, Unstable_Grid2 } from "@mui/material";
+import { MyContext } from "../context";
+import { Button, TextField } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 export const Searcher = () => {
@@ -20,7 +20,7 @@ export const Searcher = () => {
   };
 
   return (
-    <Grid2 display="flex" justifyContent="center" marginTop="2rem" >
+    <Grid2 display="flex" justifyContent="center" marginTop="2rem">
       <form onSubmit={handleSubmit} className="searcher-container">
         <TextField
           id="organization"
