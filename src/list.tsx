@@ -23,10 +23,11 @@ interface MemberEntity {
 export const ListPage: React.FC = () => {
   const myContext = React.useContext(MyContext);
   const organization = myContext.organization;
+  const members = myContext.members;
+  const setMembers = myContext.setMembers;
   const numberPagination = myContext.pag;
   const setNumberPagination = myContext.setPag;
 
-  const [members, setMembers] = React.useState<MemberEntity[]>([]);
 
   // Dividir: una llamada a todos los members, otra para la paginación
   React.useEffect(() => {

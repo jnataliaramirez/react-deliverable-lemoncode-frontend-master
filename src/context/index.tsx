@@ -1,5 +1,11 @@
 import React from "react";
 
+interface MemberEntity {
+  id: string;
+  login: string;
+  avatar_url: string;
+}
+
 interface Pagination {
   count: number;
   from: number;
@@ -9,6 +15,8 @@ interface Pagination {
 interface Context {
   organization: string;
   setOrganization: (value: string) => void;
+  members: MemberEntity[];
+  setMembers: (value: MemberEntity[]) => void;
   pageSize: number;
   pag: Pagination;
   setPag: (value: Pagination) => void;
@@ -17,6 +25,8 @@ interface Context {
 export const MyContext = React.createContext<Context>({
   organization: "",
   setOrganization: (value) => {},
+  members: [],
+  setMembers: (value) => {},
   pageSize: 0,
   pag: {
     count: 0,
@@ -27,9 +37,10 @@ export const MyContext = React.createContext<Context>({
 });
 
 export const MyContextProvider = (props) => {
-  
   const [organization, setOrganization] = React.useState("Lemoncode");
-  
+
+  const [members, setMembers] = React.useState<MemberEntity[]>([]);
+
   const pageSize: number = 6;
   const [pag, setPag] = React.useState<Pagination>({
     count: 0,
@@ -39,7 +50,15 @@ export const MyContextProvider = (props) => {
 
   return (
     <MyContext.Provider
-      value={{ organization, setOrganization, pag, setPag, pageSize }}
+      value={{
+        organization,
+        setOrganization,
+        members,
+        setMembers,
+        pageSize,
+        pag,
+        setPag,
+      }}
     >
       {props.children}
     </MyContext.Provider>
