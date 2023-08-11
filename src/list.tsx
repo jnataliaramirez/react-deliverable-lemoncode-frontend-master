@@ -1,11 +1,10 @@
 import React from "react";
 import { MyContext } from "./context";
-import Typography from "@mui/material/Typography";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { getMembers } from "./api";
 import { ListPagination } from "./components/ListPagination";
 import { Searcher } from "./components/Searcher";
 import { ListTable } from "./components/ListTable";
+import { Title } from "./components/Title";
 
 export const ListPage: React.FC = () => {
   const myContext = React.useContext(MyContext);
@@ -14,7 +13,6 @@ export const ListPage: React.FC = () => {
   const numberPagination = myContext.pag;
   const setNumberPagination = myContext.setPag;
 
-  // Dividir: una llamada a todos los members, otra para la paginación
   React.useEffect(() => {
     const fetchMembers = async (organization) => {
       const membersRes = await getMembers(organization);
@@ -26,16 +24,7 @@ export const ListPage: React.FC = () => {
 
   return (
     <>
-      <Grid2 display="flex" justifyContent="center">
-        <Typography
-          component="h2"
-          color="primary"
-          sx={{ fontSize: 24, textTransform: "uppercase", fontWeight: "bold" }}
-        >
-          Lista de miembros de la organización: {organization}
-        </Typography>
-      </Grid2>
-
+      <Title>Listado de la organización: {organization}</Title>
       <Searcher />
       <ListPagination />
       <ListTable />
