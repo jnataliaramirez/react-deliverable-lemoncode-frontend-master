@@ -36,7 +36,7 @@ export const MemberCard: React.FC = () => {
       <CardActions>
         <Button type="button" variant="contained">
           <Link className="button__back" to="/list">
-            Regresar
+            Back
           </Link>
         </Button>
       </CardActions>

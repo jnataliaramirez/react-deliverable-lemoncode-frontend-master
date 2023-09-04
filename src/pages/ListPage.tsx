@@ -25,7 +25,7 @@ export const ListPage: React.FC = () => {
 
   return (
     <>
-      <Title>Listado de la organización: {organization}</Title>
+      <Title>Organization list: {organization}</Title>
       <Searcher />
       <ListPagination />
       <ListTable />

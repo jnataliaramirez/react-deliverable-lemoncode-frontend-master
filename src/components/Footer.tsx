@@ -6,9 +6,7 @@ export const Footer = () => {
   return (
     <Grid2 display="flex" justifyContent="center" marginTop="2rem">
       <footer>
-        <Typography>
-          <p>Realizado con 🩵 por Natalia Ramirez Parra</p>
-        </Typography>
+        <Typography color="primary" > Made with 🩵 by Natalia Ramirez Parra</Typography>
       </footer>
     </Grid2>
   );

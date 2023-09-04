@@ -13,7 +13,7 @@ export const DetailPage: React.FC = () => {
         alignItems="center"
         gap="2rem"
       >
-        <Title>Detalle del usuario</Title>
+        <Title>User Detail</Title>
 
         <MemberCard />
       </Grid2>

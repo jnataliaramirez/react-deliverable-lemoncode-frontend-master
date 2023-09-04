@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import TextField from "@mui/material/TextField";
 import { Title } from "../components/Title";
@@ -31,7 +30,7 @@ export const LoginPage: React.FC = () => {
       alignItems="center"
       height="100vh"
     >
-      <Title>¡Hola! Bienvenid@ a la lista de GitHub</Title>
+      <Title>¡Hello! Welcome to GitHub List</Title>
 
       <Card
         sx={{
@@ -49,7 +48,7 @@ export const LoginPage: React.FC = () => {
               <div>
                 <TextField
                   id="user"
-                  label="Usuario:"
+                  label="User:"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   variant="standard"
@@ -60,7 +59,7 @@ export const LoginPage: React.FC = () => {
               <div>
                 <TextField
                   id="password"
-                  label="Contraseña:"
+                  label="Password:"
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -76,7 +75,7 @@ export const LoginPage: React.FC = () => {
               variant="contained"
               sx={{ mt: 2.4, width: "100%" }}
             >
-              Entrar
+              Enter
             </Button>
           </form>
         </CardContent>

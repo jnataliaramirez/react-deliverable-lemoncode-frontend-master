@@ -28,7 +28,7 @@ export const Searcher: React.FC = () => {
     <Grid2 display="flex" justifyContent="center" marginTop="2rem">
       <form onSubmit={handleSubmit} className="searcher-container">
         <TextField
-          label="Organización"
+          label="Organization"
           id="organization"
           name="organization"
           type="search"
@@ -41,7 +41,7 @@ export const Searcher: React.FC = () => {
           sx={{ width: 200 }}
         />
         <Button type="submit" variant="outlined" sx={{}}>
-          Buscar
+          Search
         </Button>
       </form>
     </Grid2>

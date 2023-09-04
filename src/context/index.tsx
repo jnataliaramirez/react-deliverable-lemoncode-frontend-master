@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 export interface MemberEntity {
   id: string;
@@ -38,7 +38,11 @@ export const MyContext = React.createContext<Context>({
   setPag(value) {},
 });
 
-export const MyContextProvider = (props) => {
+interface MyContextProviderProps {
+  children: ReactNode;
+}
+
+export const MyContextProvider: React.FC<MyContextProviderProps> = (props) => {
   const [organization, setOrganization] = React.useState("Lemoncode");
 
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
