@@ -6,14 +6,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { orders } from "../../api/mock";
-import { Checkbox } from "@mui/material";
+import { Checkbox, TextField } from "@mui/material";
 
 interface Product {
   id: number | string;
   state: boolean;
   description: string;
-  amount: number;
+  amount: string;
 }
 
 export const DetailOrder = () => {
@@ -22,31 +21,58 @@ export const DetailOrder = () => {
       id: 1,
       state: false,
       description: "Frontend Master",
-      amount: 2000,
+      amount: "2000",
     },
     {
       id: 2,
       state: false,
       description: "Backend Bootcamp",
-      amount: 1500,
+      amount: "1500",
     },
     {
       id: 3,
       state: false,
       description: "JavaScript Bootcamp",
-      amount: 1200,
+      amount: "1200",
     },
   ]);
 
+  const checkboxHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const copyProduct = [...product];
 
-    // const { id , state} = event.target;
+    const index = copyProduct.findIndex((item) => {
+      return item.id === parseInt(name, 10);
+    });
 
-    console.log("value", event.target.checked);
-    console.log("name", event);
+    if (index !== -1) {
+      copyProduct[index] = {
+        ...copyProduct[index],
+        state: checked,
+      };
 
-    // setChecked(event.target.checked);
+      setProduct(copyProduct);
+    }
+  };
+
+  const amountHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    const copyProduct = [...product];
+
+    const index = copyProduct.findIndex((item) => {
+      return item.id === parseInt(id, 10);
+    });
+
+    if (index !== -1) {
+ 
+      copyProduct[index] = {
+        ...copyProduct[index],
+        amount: value,
+      };
+  
+      setProduct(copyProduct);
+    }
   };
 
   return (
@@ -55,9 +81,9 @@ export const DetailOrder = () => {
         <TableHead>
           <TableRow>
             <TableCell></TableCell>
-            <TableCell align="right">State</TableCell>
+            <TableCell align="center">State</TableCell>
             <TableCell align="center">Description</TableCell>
-            <TableCell align="right">Amount</TableCell>
+            <TableCell align="center">Amount</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -68,19 +94,29 @@ export const DetailOrder = () => {
             >
               <TableCell>
                 <Checkbox
-                  name="valid"
+                  name={String(item.id)}
+                  value={item.state}
                   checked={item.state}
-                  onChange={handleChange}
+                  onChange={checkboxHandleChange}
                   inputProps={{ "aria-label": "controlled" }}
                 />
               </TableCell>
 
-              <TableCell align="right">
+              <TableCell align="center">
                 {item.state === false ? "Pending" : "Valid"}
               </TableCell>
 
-              <TableCell align="center">{item.description}</TableCell>
-              <TableCell align="right">{item.amount}</TableCell>
+              <TableCell>{item.description}</TableCell>
+              <TableCell align="center">
+                <TextField
+                  id={String(item.id)}
+                  name="amount"
+                  value={item.amount}
+                  onChange={amountHandleChange}
+                  type="number"
+                  variant="outlined"
+                />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

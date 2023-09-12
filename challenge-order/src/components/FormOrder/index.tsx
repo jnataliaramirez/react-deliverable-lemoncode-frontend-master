@@ -41,7 +41,6 @@ export const FormOrder = () => {
       | HTMLInputElement
       | HTMLSelectElement
       | HTMLTextAreaElement
-      | HTMLInputElement
     >
   ) => {
     const { name, value } = e.target;
