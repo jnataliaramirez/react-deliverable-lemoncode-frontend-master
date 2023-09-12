@@ -1,10 +1,10 @@
-const orders = {
+export const orders = {
   "orders": [
     {
       "id": "1",
       "provider": "Lemoncode",
       "date": "2023-09-12",
-      "totalAmount": 0,
+      "totalAmount": 4700,
       "state": 0,
       "products": [
         {

@@ -27,7 +27,7 @@ export const Home = () => {
         Order to Supplier
       </Typography>
       <FormOrder />
-      {/* <DetailOrder /> */}
+      <DetailOrder />
     </Container>
   );
 };
