@@ -40,7 +40,7 @@ export const Searcher: React.FC = () => {
           color="primary"
           sx={{ width: 200 }}
         />
-        <Button type="submit" variant="outlined" sx={{}}>
+        <Button type="submit" variant="outlined">
           Search
         </Button>
       </form>
