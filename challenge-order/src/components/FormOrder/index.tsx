@@ -15,10 +15,26 @@ export const FormOrder = () => {
   const [formData, setFormData] = useState<FormData>({
     number: "",
     provider: "",
-    date: "",
+    date: getCurrentDay(),
     totalAmount: "",
     state: "",
   });
+
+  function getCurrentDay() {
+    const fecha = new Date();
+    const year = fecha.getFullYear();
+    let month: string | number = fecha.getMonth() + 1;
+    let day: string | number = fecha.getDate();
+
+    if (month < 10) {
+      month = `0${month}`;
+    }
+    if (day < 10) {
+      day = `0${day}`;
+    }
+
+    return `${year}-${month}-${day}`;
+  }
 
   const handleChange = (
     e: ChangeEvent<
@@ -52,6 +68,7 @@ export const FormOrder = () => {
         <Grid2 display="flex" gap="2rem">
           <TextField
             id="number"
+            name="number"
             label="Number:"
             value={formData.number}
             onChange={handleChange}
@@ -62,6 +79,7 @@ export const FormOrder = () => {
 
           <TextField
             id="provider"
+            name="provider"
             label="Provider:"
             value={formData.provider}
             onChange={handleChange}
@@ -71,6 +89,7 @@ export const FormOrder = () => {
           />
           <TextField
             id="date"
+            name="date"
             label="Date:"
             value={formData.date}
             onChange={handleChange}
@@ -80,9 +99,10 @@ export const FormOrder = () => {
           />
         </Grid2>
 
-        <Grid2 display="flex" gap="2rem" >
+        <Grid2 display="flex" gap="2rem">
           <TextField
             id="totalAmount"
+            name="totalAmount"
             label="Total Amount:"
             value={formData.totalAmount}
             onChange={handleChange}
@@ -92,6 +112,7 @@ export const FormOrder = () => {
 
           <TextField
             id="state"
+            name="state"
             label="State:"
             value={formData.state}
             onChange={handleChange}
