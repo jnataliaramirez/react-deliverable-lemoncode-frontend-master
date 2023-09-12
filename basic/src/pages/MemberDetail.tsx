@@ -5,18 +5,16 @@ import { MemberCard } from "../components/MemberCard";
 
 export const DetailPage: React.FC = () => {
   return (
-    <>
-      <Grid2
-        display="flex"
-        flexDirection="column"
-        justifyContent="center"
-        alignItems="center"
-        gap="2rem"
-      >
-        <Title>User Detail</Title>
+    <Grid2
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      gap="2rem"
+    >
+      <Title>User Detail</Title>
 
-        <MemberCard />
-      </Grid2>
-    </>
+      <MemberCard />
+    </Grid2>
   );
 };
