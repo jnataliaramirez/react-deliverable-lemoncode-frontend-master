@@ -8,7 +8,6 @@ export const Home = () => {
     <Container
       maxWidth="lg"
       sx={{
-        paddingTop: 4,
         paddingBottom: 4,
       }}
     >

@@ -13,8 +13,8 @@ interface FormData {
 
 export const FormOrder = () => {
   const [formData, setFormData] = useState<FormData>({
-    id: "",
-    provider: "",
+    id: "1",
+    provider: "Lemoncode",
     date: getCurrentDay(),
     totalAmount: "",
     state: "",
