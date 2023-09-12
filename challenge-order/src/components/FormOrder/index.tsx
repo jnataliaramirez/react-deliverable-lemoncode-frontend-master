@@ -4,7 +4,7 @@ import SendIcon from "@mui/icons-material/Send";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 interface FormData {
-  number: string;
+  id: string;
   provider: string;
   date: string;
   totalAmount: string;
@@ -13,7 +13,7 @@ interface FormData {
 
 export const FormOrder = () => {
   const [formData, setFormData] = useState<FormData>({
-    number: "",
+    id: "",
     provider: "",
     date: getCurrentDay(),
     totalAmount: "",
@@ -68,10 +68,10 @@ export const FormOrder = () => {
         >
           <Grid2 display="flex" gap="2rem">
             <TextField
-              id="number"
-              name="number"
+              id="id"
+              name="id"
               label="Number:"
-              value={formData.number}
+              value={formData.id}
               onChange={handleChange}
               required
               type="text"
