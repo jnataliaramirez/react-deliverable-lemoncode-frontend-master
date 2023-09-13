@@ -5,16 +5,9 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import { Checkbox, TextField } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-
-interface Product {
-  id: number | string;
-  state: boolean;
-  description: string;
-  amount: string;
-}
+import { Product } from "../types";
 
 export const DetailOrder = () => {
   const [product, setProduct] = useState<Product[]>([
