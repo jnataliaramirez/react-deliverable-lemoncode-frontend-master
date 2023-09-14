@@ -23,7 +23,10 @@ export const Home = () => {
       }}
     >
       <Title />
-      <FormOrder onUpdatedOrderInfo={handleUpdateOrderInfo} />
+      <FormOrder
+        orderInfo={orderInfo}
+        onUpdateOrderInfo={handleUpdateOrderInfo}
+      />
       <DetailOrder />
     </Container>
   );

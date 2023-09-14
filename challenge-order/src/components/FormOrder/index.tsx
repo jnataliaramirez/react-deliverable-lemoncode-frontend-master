@@ -2,6 +2,7 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { getCurrentDay } from "../../utils/getCurrentDay";
 
 interface FormData {
   id: number;
@@ -12,7 +13,7 @@ interface FormData {
   state: string;
 }
 
-export const FormOrder = ({ onUpdatedOrderInfo }) => {
+export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
   const [formData, setFormData] = useState<FormData>({
     id: 1,
     number: "1",
@@ -21,22 +22,6 @@ export const FormOrder = ({ onUpdatedOrderInfo }) => {
     totalAmount: "",
     state: "",
   });
-
-  function getCurrentDay() {
-    const fecha = new Date();
-    const year = fecha.getFullYear();
-    let month: string | number = fecha.getMonth() + 1;
-    let day: string | number = fecha.getDate();
-
-    if (month < 10) {
-      month = `0${month}`;
-    }
-    if (day < 10) {
-      day = `0${day}`;
-    }
-
-    return `${year}-${month}-${day}`;
-  }
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -50,8 +35,7 @@ export const FormOrder = ({ onUpdatedOrderInfo }) => {
   
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("Datos del formulario:", formData);
-    onUpdatedOrderInfo(formData)
+    onUpdateOrderInfo(formData)
   };
   
   return (

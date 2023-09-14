@@ -1,10 +1,14 @@
+import { getCurrentDay } from "../utils/getCurrentDay";
+
+const currentDay = getCurrentDay();
+
 export const initialValues = {
-  id: 1,
-  number: "1",
-  provider: "Lemoncode",
-  date: "2023-09-12",
-  totalAmount: 4700,
-  state: 0,
+  id: "",
+  number: "",
+  provider: "",
+  date: currentDay,
+  totalAmount: 1400,
+  state: 1,
   products: [
     {
       id: 1,
