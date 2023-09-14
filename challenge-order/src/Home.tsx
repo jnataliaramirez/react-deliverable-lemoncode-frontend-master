@@ -13,6 +13,8 @@ export const Home = () => {
     dispatch({ type: "sendOrder", payload: orderInfo });
   };
 
+  console.log("orderInfo", orderInfo);
+
   return (
     <Container
       maxWidth="lg"
