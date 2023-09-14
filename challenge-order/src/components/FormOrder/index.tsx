@@ -4,16 +4,18 @@ import SendIcon from "@mui/icons-material/Send";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 interface FormData {
-  id: string;
+  id: number;
+  number: number | string;
   provider: string;
   date: string;
   totalAmount: string;
   state: string;
 }
 
-export const FormOrder = () => {
+export const FormOrder = ({ onUpdatedOrderInfo }) => {
   const [formData, setFormData] = useState<FormData>({
-    id: "1",
+    id: 1,
+    number: "1",
     provider: "Lemoncode",
     date: getCurrentDay(),
     totalAmount: "",
@@ -37,11 +39,7 @@ export const FormOrder = () => {
   }
 
   const handleChange = (
-    e: ChangeEvent<
-      | HTMLInputElement
-      | HTMLSelectElement
-      | HTMLTextAreaElement
-    >
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
     setFormData({
@@ -49,12 +47,13 @@ export const FormOrder = () => {
       [name]: value,
     });
   };
-
+  
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log("Datos del formulario:", formData);
+    onUpdatedOrderInfo(formData)
   };
-
+  
   return (
     <Box sx={{ p: 4, border: "1px solid grey", borderRadius: "8px" }}>
       <form onSubmit={handleSubmit}>
@@ -67,10 +66,10 @@ export const FormOrder = () => {
         >
           <Grid2 display="flex" gap="2rem">
             <TextField
-              id="id"
-              name="id"
+              id="number"
+              name="number"
               label="Number:"
-              value={formData.id}
+              value={formData.number}
               onChange={handleChange}
               required
               type="text"
@@ -86,7 +85,7 @@ export const FormOrder = () => {
               required
               type="text"
               variant="outlined"
-              sx={{ width: "400px"}}
+              sx={{ width: "400px" }}
             />
             <TextField
               id="date"
@@ -119,8 +118,7 @@ export const FormOrder = () => {
               onChange={handleChange}
               type="text"
               variant="outlined"
-              sx={{ width: "72px"}}
-
+              sx={{ width: "72px" }}
             />
             <Grid2 alignSelf="center" justifySelf="self-end" marginLeft="auto">
               <Button
@@ -129,7 +127,7 @@ export const FormOrder = () => {
                 size="medium"
                 sx={{
                   width: "160px",
-                  height: "48px"
+                  height: "48px",
                 }}
                 endIcon={<SendIcon />}
               >
