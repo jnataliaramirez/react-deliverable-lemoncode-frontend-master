@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,66 +7,23 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Checkbox, TextField } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import { Product } from "../../types";
 
 export const DetailOrder = ({ products, onUpdateProducts }) => {
-  // const [products, setProducts] = useState<Product[]>([
-  //   {
-  //     id: 1,
-  //     state: false,
-  //     description: "Frontend Master",
-  //     amount: "2000",
-  //   },
-  //   {
-  //     id: 2,
-  //     state: false,
-  //     description: "Backend Bootcamp",
-  //     amount: "1500",
-  //   },
-  //   {
-  //     id: 3,
-  //     state: false,
-  //     description: "JavaScript Bootcamp",
-  //     amount: "1200",
-  //   },
-  // ]);
-
-  console.log('products desde DetailOrder', products)
-
-  const checkboxHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = e.target;
-
-    const copyProducts = [...products];
-
-    const index = copyProducts.findIndex((item) => {
-      return item.id === parseInt(name, 10);
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, name, type, value, checked } = e.target;
+    const updateProducts = [...products];
+    const index = updateProducts.findIndex(
+      (item) => item.id === parseInt(type === "number" ? id : name, 10)
+    );
 
     if (index !== -1) {
-      copyProducts[index] = {
-        ...copyProducts[index],
-        state: checked,
+      updateProducts[index] = {
+        ...updateProducts[index],
+        [type === "number" ? "amount" : "state"]:
+          type === "checkbox" ? checked : value,
       };
 
-      onUpdateProducts(copyProducts);
-    }
-  };
-
-  const amountHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
-    const copyProducts = [...products];
-
-    const index = copyProducts.findIndex((item) => {
-      return item.id === parseInt(id, 10);
-    });
-
-    if (index !== -1) {
-      copyProducts[index] = {
-        ...copyProducts[index],
-        amount: value,
-      };
-
-      onUpdateProducts(copyProducts);
+      onUpdateProducts(updateProducts);
     }
   };
 
@@ -96,7 +53,7 @@ export const DetailOrder = ({ products, onUpdateProducts }) => {
                     name={String(item.id)}
                     value={item.state}
                     checked={item.state}
-                    onChange={checkboxHandleChange}
+                    onChange={handleChange}
                     inputProps={{ "aria-label": "controlled" }}
                   />
                 </TableCell>
@@ -111,7 +68,7 @@ export const DetailOrder = ({ products, onUpdateProducts }) => {
                     id={String(item.id)}
                     name="amount"
                     value={item.amount}
-                    onChange={amountHandleChange}
+                    onChange={handleChange}
                     type="number"
                     variant="outlined"
                   />

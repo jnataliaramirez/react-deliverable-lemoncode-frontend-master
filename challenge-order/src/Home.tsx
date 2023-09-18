@@ -9,7 +9,7 @@ import { getCurrentDay } from "./utils/getCurrentDay";
 
 export const Home = () => {
   const [orderInfo, dispatch] = useReducer(orderInfoReducer, initialValues);
-  console.log("orderInfo desde Home", orderInfo.products);
+  console.log("products desde Home", orderInfo.products);
 
   const handleUpdateOrderInfo = (orderInfo) => {
     dispatch({ type: "sendOrder", payload: orderInfo });

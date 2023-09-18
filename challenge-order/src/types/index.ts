@@ -12,7 +12,7 @@ export interface OrderState {
   date: string;
   totalAmount: number;
   state: number;
-  // products: Product[];
+  products: Product[];
 }
 
 export interface Action {
