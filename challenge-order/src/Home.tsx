@@ -5,7 +5,6 @@ import { Container } from "@mui/material";
 import { Title } from "./components/Title";
 import { orderInfoReducer } from "./useReducer";
 import { initialValues } from "./mock/orderSuplier";
-import { getCurrentDay } from "./utils/getCurrentDay";
 
 export const Home = () => {
   const [orderInfo, dispatch] = useReducer(orderInfoReducer, initialValues);
@@ -18,33 +17,15 @@ export const Home = () => {
   const handleUpdateProducts = (products) => {
     dispatch({ type: "stateProducts", payload: products });
   };
+  
+  const handleUpdateTotalAmount = (totalAmount) => {
+    dispatch({ type: "totalAmount", payload: totalAmount });
+  }
 
+  const handleUpdateState = (state) => {
+    dispatch({ type: "state", payload: state });
+  }
 
-
-  // Pasar esta función al formulario inicial
-  const getTotalAmount = (products: Product[]) => {
-    const totalAmount = products.reduce((acc, product) => {
-      const amountAsNumber = parseFloat(product.amount);
-
-      return isNaN(amountAsNumber) ? acc : acc + amountAsNumber;
-    }, 0);
-
-    return totalAmount;
-  };
-
-  // Pasar esta función al formulario inicial
-  const getState = (products: Product[]) => {
-    const totalProducts = products.length;
-
-    const checkedValid = products.filter((product) => product.state === true)
-      .length;
-
-    if (totalProducts === 0) {
-      return 0;
-    }
-
-    return Math.round((checkedValid / totalProducts) * 100);
-  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -63,9 +44,11 @@ export const Home = () => {
         <FormOrder
           orderInfo={orderInfo}
           onUpdateOrderInfo={handleUpdateOrderInfo}
-        />
+          />
         <DetailOrder
           products={orderInfo.products}
+          onUpdateTotalAmount={handleUpdateTotalAmount}
+          onUpdateState={handleUpdateState}
           onUpdateProducts={handleUpdateProducts}
         />
       </form>

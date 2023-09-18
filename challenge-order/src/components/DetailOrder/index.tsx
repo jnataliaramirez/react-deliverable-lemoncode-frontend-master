@@ -7,8 +7,14 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Checkbox, TextField } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { getState, getTotalAmount } from "../../utils/getCurrentDay";
 
-export const DetailOrder = ({ products, onUpdateProducts }) => {
+export const DetailOrder = ({
+  products,
+  onUpdateProducts,
+  onUpdateTotalAmount,
+  onUpdateState,
+}) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, name, type, value, checked } = e.target;
     const updateProducts = [...products];
@@ -24,6 +30,8 @@ export const DetailOrder = ({ products, onUpdateProducts }) => {
       };
 
       onUpdateProducts(updateProducts);
+      onUpdateTotalAmount(getTotalAmount(updateProducts));
+      onUpdateState(getState(updateProducts));
     }
   };
 

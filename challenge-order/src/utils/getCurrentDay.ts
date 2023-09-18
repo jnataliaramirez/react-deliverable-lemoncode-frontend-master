@@ -1,3 +1,5 @@
+import { Product } from "../types";
+
 export const getCurrentDay = () => {
   const fecha = new Date();
   const year = fecha.getFullYear();
@@ -12,4 +14,27 @@ export const getCurrentDay = () => {
   }
 
   return `${year}-${month}-${day}`;
-}
+};
+
+export const getTotalAmount = (products: Product[]) => {
+  const totalAmount = products.reduce((acc, product) => {
+    const amountAsNumber = parseFloat(product.amount);
+
+    return isNaN(amountAsNumber) ? acc : acc + amountAsNumber;
+  }, 0);
+
+  return totalAmount;
+};
+
+export const getState = (products: Product[]) => {
+  const totalProducts = products.length;
+
+  const checkedValid = products.filter((product) => product.state === true)
+    .length;
+
+  if (totalProducts === 0) {
+    return 0;
+  }
+
+  return Math.round((checkedValid / totalProducts) * 100);
+};
