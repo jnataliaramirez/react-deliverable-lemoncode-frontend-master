@@ -9,52 +9,29 @@ import { Checkbox, TextField } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { Product } from "../../types";
 
-export const DetailOrder = () => {
-  const [products, setProducts] = useState<Product[]>([
-    {
-      id: 1,
-      state: false,
-      description: "Frontend Master",
-      amount: "2000",
-    },
-    {
-      id: 2,
-      state: false,
-      description: "Backend Bootcamp",
-      amount: "1500",
-    },
-    {
-      id: 3,
-      state: false,
-      description: "JavaScript Bootcamp",
-      amount: "1200",
-    },
-  ]);
+export const DetailOrder = ({ products, onUpdateProducts }) => {
+  // const [products, setProducts] = useState<Product[]>([
+  //   {
+  //     id: 1,
+  //     state: false,
+  //     description: "Frontend Master",
+  //     amount: "2000",
+  //   },
+  //   {
+  //     id: 2,
+  //     state: false,
+  //     description: "Backend Bootcamp",
+  //     amount: "1500",
+  //   },
+  //   {
+  //     id: 3,
+  //     state: false,
+  //     description: "JavaScript Bootcamp",
+  //     amount: "1200",
+  //   },
+  // ]);
 
-  // Pasar esta función al formulario inicial 
-  const getTotalAmount = (products: Product[]) => {
-    const totalAmount = products.reduce((acc, product) => {
-      const amountAsNumber = parseFloat(product.amount);
-
-      return isNaN(amountAsNumber) ? acc : acc + amountAsNumber;
-    }, 0);
-
-    return totalAmount;
-  };
-
-  // Pasar esta función al formulario inicial 
-  const getState = (products: Product[]) => {
-    const totalProducts = products.length;
-
-    const checkedValid = products.filter((product) => product.state === true)
-      .length;
-
-    if (totalProducts === 0) {
-      return 0;
-    }
-
-    return Math.round((checkedValid / totalProducts) * 100);
-  };
+  console.log('products desde DetailOrder', products)
 
   const checkboxHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
@@ -71,7 +48,7 @@ export const DetailOrder = () => {
         state: checked,
       };
 
-      setProducts(copyProducts);
+      onUpdateProducts(copyProducts);
     }
   };
 
@@ -89,7 +66,7 @@ export const DetailOrder = () => {
         amount: value,
       };
 
-      setProducts(copyProducts);
+      onUpdateProducts(copyProducts);
     }
   };
 
