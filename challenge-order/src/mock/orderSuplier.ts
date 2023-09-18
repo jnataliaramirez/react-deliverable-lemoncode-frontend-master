@@ -8,11 +8,11 @@ export const initialValues = {
   provider: "",
   date: currentDay,
   totalAmount: 4700,
-  state: 0,
+  state: 33,
   products: [
     {
       id: 1,
-      state: false,
+      state: true,
       description: "Frontend Master",
       amount: 2000,
     },

@@ -81,6 +81,7 @@ export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
           />
           <Grid2 alignSelf="center" justifySelf="self-end" marginLeft="auto">
             <Button
+              disabled={orderInfo.state !== 100}
               type="submit"
               variant="contained"
               size="medium"
