@@ -31,15 +31,29 @@ export const DetailOrder = () => {
     },
   ]);
 
-  // Pasar esta función al formulario inicial Total Amount
+  // Pasar esta función al formulario inicial 
   const getTotalAmount = (products: Product[]) => {
     const totalAmount = products.reduce((acc, product) => {
       const amountAsNumber = parseFloat(product.amount);
-  
+
       return isNaN(amountAsNumber) ? acc : acc + amountAsNumber;
     }, 0);
-  
+
     return totalAmount;
+  };
+
+  // Pasar esta función al formulario inicial 
+  const getState = (products: Product[]) => {
+    const totalProducts = products.length;
+
+    const checkedValid = products.filter((product) => product.state === true)
+      .length;
+
+    if (totalProducts === 0) {
+      return 0;
+    }
+
+    return Math.round((checkedValid / totalProducts) * 100);
   };
 
   const checkboxHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
