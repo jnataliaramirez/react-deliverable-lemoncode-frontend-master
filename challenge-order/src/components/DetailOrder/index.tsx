@@ -7,10 +7,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Checkbox, TextField } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import { Product } from "../types";
+import { Product } from "../../types";
 
 export const DetailOrder = () => {
-  const [product, setProduct] = useState<Product[]>([
+  const [products, setProducts] = useState<Product[]>([
     {
       id: 1,
       state: false,
@@ -31,46 +31,60 @@ export const DetailOrder = () => {
     },
   ]);
 
+  // Pasar esta función al formulario inicial Total Amount
+  const getTotalAmount = (products: Product[]) => {
+    const totalAmount = products.reduce((acc, product) => {
+      const amountAsNumber = parseFloat(product.amount);
+  
+      return isNaN(amountAsNumber) ? acc : acc + amountAsNumber;
+    }, 0);
+  
+    return totalAmount;
+  };
+
   const checkboxHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
 
-    const copyProduct = [...product];
+    const copyProducts = [...products];
 
-    const index = copyProduct.findIndex((item) => {
+    const index = copyProducts.findIndex((item) => {
       return item.id === parseInt(name, 10);
     });
 
     if (index !== -1) {
-      copyProduct[index] = {
-        ...copyProduct[index],
+      copyProducts[index] = {
+        ...copyProducts[index],
         state: checked,
       };
 
-      setProduct(copyProduct);
+      setProducts(copyProducts);
     }
   };
 
   const amountHandleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
-    const copyProduct = [...product];
+    const copyProducts = [...products];
 
-    const index = copyProduct.findIndex((item) => {
+    const index = copyProducts.findIndex((item) => {
       return item.id === parseInt(id, 10);
     });
 
     if (index !== -1) {
-      copyProduct[index] = {
-        ...copyProduct[index],
+      copyProducts[index] = {
+        ...copyProducts[index],
         amount: value,
       };
 
-      setProduct(copyProduct);
+      setProducts(copyProducts);
     }
   };
 
   return (
-    <Grid2 marginTop="2rem" sx={{ p: 4, border: "1px solid grey", borderRadius: "8px" }}>
-      <TableContainer >
+    <Grid2
+      marginTop="2rem"
+      sx={{ p: 4, border: "1px solid grey", borderRadius: "8px" }}
+    >
+      <TableContainer>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -81,7 +95,7 @@ export const DetailOrder = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {product.map((item) => (
+            {products.map((item) => (
               <TableRow
                 key={item.id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
