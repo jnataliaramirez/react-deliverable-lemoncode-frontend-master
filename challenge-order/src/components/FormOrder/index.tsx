@@ -73,7 +73,7 @@ export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
             id="state"
             name="state"
             label="State:"
-            value={orderInfo.state}
+            value={`${orderInfo.state}%`}
             onChange={handleChange}
             type="text"
             variant="outlined"

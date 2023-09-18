@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useReducer, useState } from "react";
+import React, { FormEvent, useReducer } from "react";
 import { FormOrder } from "./components/FormOrder";
 import { DetailOrder } from "./components/DetailOrder";
 import { Container } from "@mui/material";
@@ -8,24 +8,21 @@ import { initialValues } from "./mock/orderSuplier";
 
 export const Home = () => {
   const [orderInfo, dispatch] = useReducer(orderInfoReducer, initialValues);
-  console.log("products desde Home", orderInfo.products);
 
-  const handleUpdateOrderInfo = (orderInfo) => {
-    dispatch({ type: "sendOrder", payload: orderInfo });
+  const handlers = {
+    updateOrderInfo: (payload) => {
+      dispatch({ type: "sendOrder", payload: payload });
+    },
+    updateProducts: (payload) => {
+      dispatch({ type: "stateProducts", payload: payload });
+    },
+    updateTotalAmount: (payload) => {
+      dispatch({ type: "totalAmount", payload: payload });
+    },
+    updateState: (payload) => {
+      dispatch({ type: "state", payload: payload });
+    },
   };
-
-  const handleUpdateProducts = (products) => {
-    dispatch({ type: "stateProducts", payload: products });
-  };
-  
-  const handleUpdateTotalAmount = (totalAmount) => {
-    dispatch({ type: "totalAmount", payload: totalAmount });
-  }
-
-  const handleUpdateState = (state) => {
-    dispatch({ type: "state", payload: state });
-  }
-
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -43,13 +40,13 @@ export const Home = () => {
       <form onSubmit={handleSubmit}>
         <FormOrder
           orderInfo={orderInfo}
-          onUpdateOrderInfo={handleUpdateOrderInfo}
-          />
+          onUpdateOrderInfo={handlers.updateOrderInfo}
+        />
         <DetailOrder
           products={orderInfo.products}
-          onUpdateTotalAmount={handleUpdateTotalAmount}
-          onUpdateState={handleUpdateState}
-          onUpdateProducts={handleUpdateProducts}
+          onUpdateTotalAmount={handlers.updateTotalAmount}
+          onUpdateState={handlers.updateState}
+          onUpdateProducts={handlers.updateProducts}
         />
       </form>
     </Container>

@@ -3,12 +3,12 @@ import { getCurrentDay } from "../utils/getCurrentDay";
 const currentDay = getCurrentDay();
 
 export const initialValues = {
-  id: "",
+  id: "1",
   number: "",
   provider: "",
   date: currentDay,
-  totalAmount: 1400,
-  state: 1,
+  totalAmount: 4700,
+  state: 0,
   products: [
     {
       id: 1,

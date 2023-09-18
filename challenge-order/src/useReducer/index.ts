@@ -21,11 +21,11 @@ export const orderInfoReducer = (state, action) => {
         totalAmount: action.payload,
       };
     }
-    case "state" : {
+    case "state": {
       return {
-        ...state, 
+        ...state,
         state: action.payload,
-      }
+      };
     }
     default:
       return state;
