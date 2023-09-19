@@ -16,11 +16,11 @@ export const Home = () => {
     updateProducts: (payload) => {
       dispatch({ type: "stateProducts", payload: payload });
     },
-    updateTotalAmount: (payload) => {
-      dispatch({ type: "totalAmount", payload: payload });
+    validAllCheckboxes: () => {
+      dispatch({ type: "validAllCheckboxes" });
     },
-    updateState: (payload) => {
-      dispatch({ type: "state", payload: payload });
+    unselectedCheckboxes: () => {
+      dispatch({ type: "unselectAllCheckboxes" });
     },
     updateClearInfo: () => {
       dispatch({ type: "clearInfo" });
@@ -51,9 +51,10 @@ export const Home = () => {
         />
         <DetailOrder
           products={orderInfo.products}
-          onUpdateTotalAmount={handlers.updateTotalAmount}
-          onUpdateState={handlers.updateState}
           onUpdateProducts={handlers.updateProducts}
+          onUpdateAllCheckboxes={handlers.validAllCheckboxes}
+          onUnselectedCheckboxes=
+          {handlers.unselectedCheckboxes}
         />
       </form>
     </Container>

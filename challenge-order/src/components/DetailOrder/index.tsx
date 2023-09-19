@@ -12,45 +12,21 @@ import { getState, getTotalAmount } from "../../utils/getCurrentDay";
 export const DetailOrder = ({
   products,
   onUpdateProducts,
-  onUpdateTotalAmount,
-  onUpdateState,
+  onUpdateAllCheckboxes,
+  onUnselectedCheckboxes,
 }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, name, type, value, checked } = e.target;
-    const updateProducts = [...products];
-    const index = updateProducts.findIndex(
-      (item) => item.id === parseInt(type === "number" ? id : name, 10)
-    );
 
-    if (index !== -1) {
-      updateProducts[index] = {
-        ...updateProducts[index],
-        [type === "number" ? "amount" : "state"]:
-          type === "checkbox" ? checked : value,
-      };
-
-      onUpdateProducts(updateProducts);
-      onUpdateTotalAmount(getTotalAmount(updateProducts));
-      onUpdateState(getState(updateProducts));
-    }
+    onUpdateProducts({ id, name, type, value, checked });
   };
 
-  const handleCheckAll = () => {
-    const updateProducts = [...products];
-
-    updateProducts.map((product) => (product.state = true));
-
-    onUpdateProducts(updateProducts);
-    onUpdateState(getState(updateProducts));
+  const handleAllCheckboxes = () => {
+    onUpdateAllCheckboxes();
   };
 
-  const handleUnSelectkAll = () => {
-    const updateProducts = [...products];
-
-    updateProducts.map((product) => (product.state = false));
-
-    onUpdateProducts(updateProducts);
-    onUpdateState(getState(updateProducts));
+  const handleUnselectAllCheckboxes = () => {
+    onUnselectedCheckboxes();
   };
 
   return (
@@ -59,10 +35,12 @@ export const DetailOrder = ({
       sx={{ p: 4, border: "1px solid grey", borderRadius: "8px" }}
     >
       <Grid2 display="flex" gap="1rem">
-        <Button variant="contained" onClick={handleCheckAll}>
+        <Button variant="contained" onClick={handleAllCheckboxes}>
           Valid all
         </Button>
-        <Button variant="outlined" onClick={handleUnSelectkAll} >Pending All</Button>
+        <Button variant="outlined" onClick={handleUnselectAllCheckboxes}>
+          Pending All
+        </Button>
       </Grid2>
       <TableContainer>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
