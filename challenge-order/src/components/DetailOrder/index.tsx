@@ -5,7 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { Checkbox, TextField } from "@mui/material";
+import { Button, Checkbox, TextField } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import { getState, getTotalAmount } from "../../utils/getCurrentDay";
 
@@ -35,11 +35,35 @@ export const DetailOrder = ({
     }
   };
 
+  const handleCheckAll = () => {
+    const updateProducts = [...products];
+
+    updateProducts.map((product) => (product.state = true));
+
+    onUpdateProducts(updateProducts);
+    onUpdateState(getState(updateProducts));
+  };
+
+  const handleUnSelectkAll = () => {
+    const updateProducts = [...products];
+
+    updateProducts.map((product) => (product.state = false));
+
+    onUpdateProducts(updateProducts);
+    onUpdateState(getState(updateProducts));
+  };
+
   return (
     <Grid2
       marginTop="2rem"
       sx={{ p: 4, border: "1px solid grey", borderRadius: "8px" }}
     >
+      <Grid2 display="flex" gap="1rem">
+        <Button variant="contained" onClick={handleCheckAll}>
+          Valid all
+        </Button>
+        <Button variant="outlined" onClick={handleUnSelectkAll} >Pending All</Button>
+      </Grid2>
       <TableContainer>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
