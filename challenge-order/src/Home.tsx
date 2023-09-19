@@ -22,11 +22,18 @@ export const Home = () => {
     updateState: (payload) => {
       dispatch({ type: "state", payload: payload });
     },
+    updateClearInfo: () => {
+      dispatch({ type: "clearInfo" });
+    },
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     console.log("Datos formulario", orderInfo);
+
+    handlers.updateClearInfo();
+
+    alert("Form sent")
   };
 
   return (

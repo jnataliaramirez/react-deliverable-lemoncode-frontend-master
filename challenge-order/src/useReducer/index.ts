@@ -26,6 +26,19 @@ export const orderInfoReducer = (state, action) => {
         state: action.payload,
       };
     }
+    case "clearInfo": {
+      return {
+        ...state,
+        number: "2",
+        provider: "",
+        date: "1815-12-10",
+        totalAmount: 0,
+        state: 0,
+        products: [],
+      }
+      
+      
+    }
     default:
       return state;
   }
