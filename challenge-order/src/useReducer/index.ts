@@ -5,9 +5,7 @@ export const orderInfoReducer = (state, action) => {
     case "sendOrder":
       return {
         ...state,
-        number: action.payload.number,
-        provider: action.payload.provider,
-        date: action.payload.date,
+        [action.payload.name]: action.payload.value,
       };
     case "stateProducts":
       return {
@@ -35,9 +33,7 @@ export const orderInfoReducer = (state, action) => {
         totalAmount: 0,
         state: 0,
         products: [],
-      }
-      
-      
+      };
     }
     default:
       return state;

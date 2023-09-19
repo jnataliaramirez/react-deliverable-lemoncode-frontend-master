@@ -8,10 +8,7 @@ export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    onUpdateOrderInfo({
-      ...orderInfo,
-      [name]: value,
-    });
+    onUpdateOrderInfo({ name, value });
   };
 
   return (

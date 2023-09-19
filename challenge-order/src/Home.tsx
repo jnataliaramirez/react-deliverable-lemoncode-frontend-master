@@ -33,7 +33,7 @@ export const Home = () => {
 
     handlers.updateClearInfo();
 
-    alert("Form sent")
+    alert("Form sent");
   };
 
   return (
