@@ -5,7 +5,6 @@ export const orderInfoReducer = (state, action) => {
     case "sendOrder":
       return {
         ...state,
-        id: action.payload.id,
         number: action.payload.number,
         provider: action.payload.provider,
         date: action.payload.date,

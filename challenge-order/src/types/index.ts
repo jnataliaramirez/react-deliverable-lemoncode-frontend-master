@@ -6,7 +6,6 @@ export interface Product {
 }
 
 export interface OrderState {
-  id: number | string;
   number: string;
   provider: string;
   date: string;

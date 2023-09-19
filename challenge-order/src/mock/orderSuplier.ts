@@ -3,8 +3,7 @@ import { getCurrentDay } from "../utils/getCurrentDay";
 const currentDay = getCurrentDay();
 
 export const initialValues = {
-  id: "1",
-  number: "",
+  number: "1",
   provider: "",
   date: currentDay,
   totalAmount: 4700,

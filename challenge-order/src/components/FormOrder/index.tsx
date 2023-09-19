@@ -29,7 +29,6 @@ export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
             name="number"
             label="Number:"
             value={orderInfo.number}
-            onChange={handleChange}
             required
             type="text"
             variant="outlined"
@@ -64,7 +63,6 @@ export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
             name="totalAmount"
             label="Total Amount:"
             value={orderInfo.totalAmount}
-            onChange={handleChange}
             type="text"
             variant="outlined"
           />
@@ -74,7 +72,6 @@ export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
             name="state"
             label="State:"
             value={`${orderInfo.state}%`}
-            onChange={handleChange}
             type="text"
             variant="outlined"
             sx={{ width: "72px" }}
