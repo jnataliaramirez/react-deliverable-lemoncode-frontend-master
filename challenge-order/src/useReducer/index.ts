@@ -1,7 +1,11 @@
-import { Action, OrderState } from "../types";
+import { Action, OrderInformationInterface } from "../types";
 import { getState, getTotalAmount } from "../utils/getCurrentDay";
 
-export const orderInformationReducer = (state, action) => {
+
+export const orderInformationReducer = (
+  state: OrderInformationInterface,
+  action: Action
+): OrderInformationInterface => {
   switch (action.type) {
     case "sendOrder":
       return {

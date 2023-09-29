@@ -14,7 +14,43 @@ export interface OrderInformationInterface {
   products: Product[];
 }
 
-export interface Action {
-  type: string;
-  payload: any;
+export interface SendOrderAction {
+  type: "sendOrder";
+  payload: {
+    name: string;
+    value: string;
+  };
 }
+
+export interface StateProductsAction {
+  type: "stateProducts";
+  payload: {
+    type: "number" | "text" | "checkbox";
+    id: number | string;
+    name: string;
+    value: string;
+    checked: boolean;
+  };
+}
+
+export interface ValidAllCheckboxesAction {
+  type: "validAllCheckboxes";
+  payload: null;
+}
+
+export interface UnselectAllCheckboxesAction {
+  type: "unselectAllCheckboxes";
+  payload: null;
+}
+
+export interface ClearInfoAction {
+  type: "clearInfo";
+  payload: null;
+}
+
+export type Action =
+  | SendOrderAction
+  | StateProductsAction
+  | ValidAllCheckboxesAction
+  | UnselectAllCheckboxesAction
+  | ClearInfoAction;
