@@ -2,9 +2,14 @@ import React, { ChangeEvent } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { OrderInformationInterface } from "../../types";
 
-export const FormOrder = (props) => {
-  
+interface Props {
+  orderInformation: OrderInformationInterface;
+  onUpdateOrderInformation: ({ name, value }) => void;
+}
+
+export const FormOrder: React.FC<Props> = (props) => {
   const { orderInformation, onUpdateOrderInformation } = props;
 
   const handleChange = (

@@ -5,7 +5,7 @@ export interface Product {
   amount: string;
 }
 
-export interface OrderState {
+export interface OrderInformationInterface {
   number: string;
   provider: string;
   date: string;

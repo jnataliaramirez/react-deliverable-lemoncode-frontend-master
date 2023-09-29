@@ -1,12 +1,12 @@
 import React, { FormEvent, useReducer } from "react";
 import { FormOrder } from "./components/FormOrder";
 import { DetailOrder } from "./components/DetailOrder";
-import { Container, FormControl } from "@mui/material";
+import { Container } from "@mui/material";
 import { Title } from "./components/Title";
 import { orderInformationReducer } from "./useReducer";
 import { initialValues } from "./mock/orderSuplier";
 
-export const Home = () => {
+export const Home: React.FC = () => {
   const [orderInformation, dispatch] = useReducer(
     orderInformationReducer,
     initialValues
@@ -29,6 +29,7 @@ export const Home = () => {
       dispatch({ type: "clearInfo" });
     },
   };
+
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

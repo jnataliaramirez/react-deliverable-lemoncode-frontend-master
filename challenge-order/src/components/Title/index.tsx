@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography } from "@mui/material";
 
-export const Title = () => {
+export const Title : React.FC = () => {
   return (
     <Typography
       variant="h4"
