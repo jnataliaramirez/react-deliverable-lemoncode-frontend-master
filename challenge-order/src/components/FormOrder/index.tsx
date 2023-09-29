@@ -3,12 +3,15 @@ import { Box, Button, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
-export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
+export const FormOrder = (props) => {
+  
+  const { orderInformation, onUpdateOrderInformation } = props;
+
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    onUpdateOrderInfo({ name, value });
+    onUpdateOrderInformation({ name, value });
   };
 
   return (
@@ -25,7 +28,7 @@ export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
             id="number"
             name="number"
             label="Number:"
-            value={orderInfo.number}
+            value={orderInformation.number}
             required
             type="text"
             variant="outlined"
@@ -35,7 +38,7 @@ export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
             id="provider"
             name="provider"
             label="Provider:"
-            value={orderInfo.provider}
+            value={orderInformation.provider}
             onChange={handleChange}
             required
             type="text"
@@ -46,7 +49,7 @@ export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
             id="date"
             name="date"
             label="Date:"
-            value={orderInfo.date}
+            value={orderInformation.date}
             onChange={handleChange}
             required
             type="date"
@@ -59,7 +62,7 @@ export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
             id="totalAmount"
             name="totalAmount"
             label="Total Amount:"
-            value={orderInfo.totalAmount}
+            value={orderInformation.totalAmount}
             type="text"
             variant="outlined"
           />
@@ -68,14 +71,14 @@ export const FormOrder = ({ orderInfo, onUpdateOrderInfo }) => {
             id="state"
             name="state"
             label="State:"
-            value={`${orderInfo.state}%`}
+            value={`${orderInformation.state}%`}
             type="text"
             variant="outlined"
             sx={{ width: "72px" }}
           />
           <Grid2 alignSelf="center" justifySelf="self-end" marginLeft="auto">
             <Button
-              disabled={orderInfo.state !== 100}
+              disabled={orderInformation.state !== 100}
               type="submit"
               variant="contained"
               size="medium"

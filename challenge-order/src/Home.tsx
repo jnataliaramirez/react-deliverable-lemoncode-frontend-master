@@ -1,16 +1,19 @@
 import React, { FormEvent, useReducer } from "react";
 import { FormOrder } from "./components/FormOrder";
 import { DetailOrder } from "./components/DetailOrder";
-import { Container } from "@mui/material";
+import { Container, FormControl } from "@mui/material";
 import { Title } from "./components/Title";
-import { orderInfoReducer } from "./useReducer";
+import { orderInformationReducer } from "./useReducer";
 import { initialValues } from "./mock/orderSuplier";
 
 export const Home = () => {
-  const [orderInfo, dispatch] = useReducer(orderInfoReducer, initialValues);
+  const [orderInformation, dispatch] = useReducer(
+    orderInformationReducer,
+    initialValues
+  );
 
   const handlers = {
-    updateOrderInfo: (payload) => {
+    updateOrderInformation: (payload) => {
       dispatch({ type: "sendOrder", payload: payload });
     },
     updateProducts: (payload) => {
@@ -29,10 +32,9 @@ export const Home = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log("Datos formulario", orderInfo);
+    console.log("Datos formulario", orderInformation);
 
     handlers.updateClearInfo();
-
     alert("Form sent");
   };
 
@@ -44,17 +46,17 @@ export const Home = () => {
       }}
     >
       <Title />
+
       <form onSubmit={handleSubmit}>
         <FormOrder
-          orderInfo={orderInfo}
-          onUpdateOrderInfo={handlers.updateOrderInfo}
+          orderInformation={orderInformation}
+          onUpdateOrderInformation={handlers.updateOrderInformation}
         />
         <DetailOrder
-          products={orderInfo.products}
+          products={orderInformation.products}
           onUpdateProducts={handlers.updateProducts}
           onUpdateAllCheckboxes={handlers.validAllCheckboxes}
-          onUnselectedCheckboxes=
-          {handlers.unselectedCheckboxes}
+          onUnselectedCheckboxes={handlers.unselectedCheckboxes}
         />
       </form>
     </Container>
