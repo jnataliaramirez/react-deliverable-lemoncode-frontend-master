@@ -1,26 +1,25 @@
-import { getState, getTotalAmount } from "../utils/getCurrentDay";
-import { Action, OrderInformation } from "../types";
+import { getState, getTotalAmount } from '../utils/getCurrentDay';
+import { Action, OrderInformation } from '../types';
 
 export const orderInformationReducer = (
   state: OrderInformation,
-  action: Action
+  action: Action,
 ): OrderInformation => {
   switch (action.type) {
-    
-    case "sendOrder":
+    case 'sendOrder':
       return {
         ...state,
         [action.payload.name]: action.payload.value,
       };
 
-    case "StateProductsPayload":
+    case 'StateProductsPayload':
       const { type, id, name, value, checked } = action.payload;
       const updateProducts = state.products.map((item) => {
-        if (item.id === parseInt(type === "number" ? id : name, 10)) {
+        if (item.id === parseInt(type === 'number' ? id : name, 10)) {
           return {
             ...item,
-            [type === "number" ? "amount" : "state"]:
-              type === "checkbox" ? checked : value,
+            [type === 'number' ? 'amount' : 'state']:
+              type === 'checkbox' ? checked : value,
           };
         }
         return item;
@@ -32,7 +31,7 @@ export const orderInformationReducer = (
         products: updateProducts,
       };
 
-    case "validAllCheckboxes":
+    case 'validAllCheckboxes':
       const productsValid = state.products.map((product) => ({
         ...product,
         state: true,
@@ -43,7 +42,7 @@ export const orderInformationReducer = (
         products: productsValid,
       };
 
-    case "unselectAllCheckboxes":
+    case 'unselectAllCheckboxes':
       const productsUnselect = state.products.map((product) => ({
         ...product,
         state: false,
@@ -54,19 +53,19 @@ export const orderInformationReducer = (
         products: productsUnselect,
       };
 
-    case "clearInfo":
+    case 'clearInfo':
       return {
-        number: "2",
-        provider: "",
-        date: "1815-12-10",
+        number: '2',
+        provider: '',
+        date: '1815-12-10',
         totalAmount: 0,
         state: 0,
         products: [
           {
             id: 2,
             state: false,
-            description: "...",
-            amount: "0",
+            description: '...',
+            amount: '0',
           },
         ],
       };

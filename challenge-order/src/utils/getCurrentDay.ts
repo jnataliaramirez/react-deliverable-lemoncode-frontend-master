@@ -1,4 +1,4 @@
-import { Product } from "../types";
+import { Product } from '../types';
 
 export const getCurrentDay = (): string => {
   const fecha = new Date();
@@ -16,7 +16,7 @@ export const getCurrentDay = (): string => {
   return `${year}-${month}-${day}`;
 };
 
-export const getTotalAmount = (products: Product[]) : number => {
+export const getTotalAmount = (products: Product[]): number => {
   const totalAmount = products.reduce((acc, product) => {
     const amountAsNumber = parseFloat(product.amount);
 
@@ -26,11 +26,12 @@ export const getTotalAmount = (products: Product[]) : number => {
   return totalAmount;
 };
 
-export const getState = (products: Product[]) : number => {
+export const getState = (products: Product[]): number => {
   const totalProducts = products.length;
 
-  const checkedValid = products.filter((product) => product.state === true)
-    .length;
+  const checkedValid = products.filter(
+    (product) => product.state === true,
+  ).length;
 
   if (totalProducts === 0) {
     return 0;

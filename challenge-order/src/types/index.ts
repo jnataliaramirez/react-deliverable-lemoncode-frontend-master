@@ -28,25 +28,25 @@ export interface StateProductsPayload {
 }
 
 export interface SendOrderAction {
-  type: "sendOrder";
+  type: 'sendOrder';
   payload: SendOrderPayload;
 }
 
 export interface StateProductsAction {
-  type: "StateProductsPayload";
+  type: 'StateProductsPayload';
   payload: StateProductsPayload;
 }
 
 export interface ValidAllCheckboxesAction {
-  type: "validAllCheckboxes";
+  type: 'validAllCheckboxes';
 }
 
 export interface UnselectAllCheckboxesAction {
-  type: "unselectAllCheckboxes";
+  type: 'unselectAllCheckboxes';
 }
 
 export interface ClearInfoAction {
-  type: "clearInfo";
+  type: 'clearInfo';
 }
 
 export type Action =
