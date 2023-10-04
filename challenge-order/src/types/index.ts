@@ -14,12 +14,12 @@ export interface OrderInformation {
   products: Product[];
 }
 
-export interface SendOrderActionPayload {
+export interface SendOrderPayload {
   name: string;
   value: string;
 }
 
-export interface StateProductsActionPayload {
+export interface StateProductsPayload {
   type: "number" | "checkbox";
   id: string;
   name: string;
@@ -29,12 +29,12 @@ export interface StateProductsActionPayload {
 
 export interface SendOrderAction {
   type: "sendOrder";
-  payload: SendOrderActionPayload;
+  payload: SendOrderPayload;
 }
 
-export interface StateProductsAction {
-  type: "stateProducts";
-  payload: StateProductsActionPayload;
+export interface StateProductsPayloadAction {
+  type: "StateProductsPayload";
+  payload: StateProductsPayload;
 }
 
 export interface ValidAllCheckboxesAction {
@@ -51,7 +51,7 @@ export interface ClearInfoAction {
 
 export type Action =
   | SendOrderAction
-  | StateProductsAction
+  | StateProductsPayloadAction
   | ValidAllCheckboxesAction
   | UnselectAllCheckboxesAction
   | ClearInfoAction;

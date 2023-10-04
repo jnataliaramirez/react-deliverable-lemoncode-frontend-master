@@ -11,7 +11,7 @@ export const orderInformationReducer = (
         ...state,
         [action.payload.name]: action.payload.value,
       };
-    case "stateProducts":
+    case "StateProductsPayload":
       const { type, id, name, value, checked } = action.payload;
       const updateProducts = state.products.map((item) => {
         if (item.id === parseInt(type === "number" ? id : name, 10)) {
