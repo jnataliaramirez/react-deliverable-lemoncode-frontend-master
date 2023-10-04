@@ -7,8 +7,16 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { Button, Checkbox, TextField } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import { Product, StateProductsPayload } from "../../types";
 
-export const DetailOrder = (props) => {
+interface Props {
+  products: Product[];
+  onUpdateProducts: (payload: StateProductsPayload) => void;
+  onUpdateAllCheckboxes: () => void;
+  onUnselectedCheckboxes: () => void;
+}
+
+export const DetailOrder: React.FC = (props : Props) => {
 
   const {
     products,

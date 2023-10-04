@@ -1,10 +1,10 @@
 import React, { FormEvent, useReducer } from "react";
-import { FormOrder } from "./components/FormOrder";
-import { DetailOrder } from "./components/DetailOrder";
 import { Container } from "@mui/material";
-import { Title } from "./components/Title";
 import { orderInformationReducer } from "./useReducer";
 import { initialValues } from "./mock/orderSuplier";
+import { Title } from "./components/Title";
+import { FormOrder } from "./components/FormOrder";
+import { DetailOrder } from "./components/DetailOrder";
 import { SendOrderPayload, StateProductsPayload } from "./types";
 
 export const Home: React.FC = () => {
