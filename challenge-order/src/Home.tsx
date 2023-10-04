@@ -5,6 +5,7 @@ import { Container } from "@mui/material";
 import { Title } from "./components/Title";
 import { orderInformationReducer } from "./useReducer";
 import { initialValues } from "./mock/orderSuplier";
+import { SendOrderActionPayload, StateProductsActionPayload } from "./types";
 
 export const Home: React.FC = () => {
   const [orderInformation, dispatch] = useReducer(
@@ -13,10 +14,10 @@ export const Home: React.FC = () => {
   );
 
   const handlers = {
-    updateOrderInformation: (payload) => {
+    updateOrderInformation: (payload: SendOrderActionPayload) => {
       dispatch({ type: "sendOrder", payload: payload });
     },
-    updateProducts: (payload) => {
+    updateProducts: (payload: StateProductsActionPayload) => {
       dispatch({ type: "stateProducts", payload: payload });
     },
     validAllCheckboxes: () => {
@@ -29,7 +30,6 @@ export const Home: React.FC = () => {
       dispatch({ type: "clearInfo" });
     },
   };
-
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();

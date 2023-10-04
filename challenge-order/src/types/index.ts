@@ -5,7 +5,7 @@ export interface Product {
   amount: string;
 }
 
-export interface OrderInformationInterface {
+export interface OrderInformation {
   number: string;
   provider: string;
   date: string;
@@ -14,38 +14,39 @@ export interface OrderInformationInterface {
   products: Product[];
 }
 
+export interface SendOrderActionPayload {
+  name: string;
+  value: string;
+}
+
+export interface StateProductsActionPayload {
+  type: "number" | "checkbox";
+  id: string;
+  name: string;
+  value: string;
+  checked: boolean;
+}
+
 export interface SendOrderAction {
   type: "sendOrder";
-  payload: {
-    name: string;
-    value: string;
-  };
+  payload: SendOrderActionPayload;
 }
 
 export interface StateProductsAction {
   type: "stateProducts";
-  payload: {
-    type: "number" | "text" | "checkbox";
-    id: number | string;
-    name: string;
-    value: string;
-    checked: boolean;
-  };
+  payload: StateProductsActionPayload;
 }
 
 export interface ValidAllCheckboxesAction {
   type: "validAllCheckboxes";
-  payload: null;
 }
 
 export interface UnselectAllCheckboxesAction {
   type: "unselectAllCheckboxes";
-  payload: null;
 }
 
 export interface ClearInfoAction {
   type: "clearInfo";
-  payload: null;
 }
 
 export type Action =

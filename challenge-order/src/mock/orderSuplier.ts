@@ -1,8 +1,9 @@
+import { OrderInformation } from "../types";
 import { getCurrentDay } from "../utils/getCurrentDay";
 
 const currentDay = getCurrentDay();
 
-export const initialValues = {
+export const initialValues : OrderInformation = {
   number: "1",
   provider: "",
   date: currentDay,
@@ -13,19 +14,19 @@ export const initialValues = {
       id: 1,
       state: true,
       description: "Frontend Master",
-      amount: 2000,
+      amount: "2000",
     },
     {
       id: 2,
       state: false,
       description: "Backend Bootcamp",
-      amount: 1500,
+      amount: "1500",
     },
     {
       id: 3,
       state: false,
       description: "JavaScript Bootcamp",
-      amount: 1200,
+      amount: "1200",
     },
   ],
 }

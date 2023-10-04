@@ -1,11 +1,10 @@
-import { Action, OrderInformationInterface } from "../types";
+import { Action, OrderInformation } from "../types";
 import { getState, getTotalAmount } from "../utils/getCurrentDay";
 
-
 export const orderInformationReducer = (
-  state: OrderInformationInterface,
+  state: OrderInformation,
   action: Action
-): OrderInformationInterface => {
+): OrderInformation => {
   switch (action.type) {
     case "sendOrder":
       return {
@@ -62,7 +61,7 @@ export const orderInformationReducer = (
             id: 2,
             state: false,
             description: "...",
-            amount: 0,
+            amount: "0",
           },
         ],
       };

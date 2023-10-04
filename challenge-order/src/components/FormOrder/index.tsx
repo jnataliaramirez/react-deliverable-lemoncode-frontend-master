@@ -2,10 +2,10 @@ import React, { ChangeEvent } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import { OrderInformationInterface } from "../../types";
+import { OrderInformation } from "../../types";
 
 interface Props {
-  orderInformation: OrderInformationInterface;
+  orderInformation: OrderInformation;
   onUpdateOrderInformation: ({ name, value }) => void;
 }
 
