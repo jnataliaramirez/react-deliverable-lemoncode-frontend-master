@@ -2,11 +2,11 @@ import React, { ChangeEvent } from "react";
 import { Box, Button, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import { OrderInformation } from "../../types";
+import { OrderInformation, SendOrderPayload } from "../../types";
 
 interface Props {
   orderInformation: OrderInformation;
-  onUpdateOrderInformation: ({ name, value }) => void;
+  onUpdateOrderInformation: (payload: SendOrderPayload) => void;
 }
 
 export const FormOrder: React.FC<Props> = (props) => {

@@ -1,16 +1,18 @@
-import { Action, OrderInformation } from "../types";
 import { getState, getTotalAmount } from "../utils/getCurrentDay";
+import { Action, OrderInformation } from "../types";
 
 export const orderInformationReducer = (
   state: OrderInformation,
   action: Action
 ): OrderInformation => {
   switch (action.type) {
+    
     case "sendOrder":
       return {
         ...state,
         [action.payload.name]: action.payload.value,
       };
+
     case "StateProductsPayload":
       const { type, id, name, value, checked } = action.payload;
       const updateProducts = state.products.map((item) => {
@@ -29,6 +31,7 @@ export const orderInformationReducer = (
         state: getState(updateProducts),
         products: updateProducts,
       };
+
     case "validAllCheckboxes":
       const productsValid = state.products.map((product) => ({
         ...product,
@@ -39,6 +42,7 @@ export const orderInformationReducer = (
         state: 100,
         products: productsValid,
       };
+
     case "unselectAllCheckboxes":
       const productsUnselect = state.products.map((product) => ({
         ...product,
@@ -49,6 +53,7 @@ export const orderInformationReducer = (
         state: 0,
         products: productsUnselect,
       };
+
     case "clearInfo":
       return {
         number: "2",

@@ -16,8 +16,7 @@ interface Props {
   onUnselectedCheckboxes: () => void;
 }
 
-export const DetailOrder: React.FC = (props : Props) => {
-
+export const DetailOrder: React.FC<Props> = (props) => {
   const {
     products,
     onUpdateProducts,
