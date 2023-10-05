@@ -1,12 +1,13 @@
-import React from "react";
-import { Link, useParams } from "react-router-dom";
-import { MemberEntity, MyContext } from "../context";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
+import React from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { MemberEntity, MyContext } from '../context';
+import { routes } from 'core';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import CardActions from '@mui/material/CardActions';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 export const MemberCard: React.FC = () => {
   const { id } = useParams();
@@ -35,7 +36,7 @@ export const MemberCard: React.FC = () => {
 
       <CardActions>
         <Button type="button" variant="contained">
-          <Link className="button__back" to="/list">
+          <Link className="button__back" to={routes.list}>
             Back
           </Link>
         </Button>

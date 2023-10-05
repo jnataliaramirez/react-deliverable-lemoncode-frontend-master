@@ -1,24 +1,25 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-import TextField from "@mui/material/TextField";
-import { Title } from "../components/Title";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { routes } from 'core';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
+import TextField from '@mui/material/TextField';
+import { Title } from '../components/Title';
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
   const handleNavigation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (username === "admin" && password === "test") {
-      navigate("/list");
+    if (username === 'admin' && password === 'test') {
+      navigate(routes.list);
     } else {
-      alert("Usuario / contraseña no valido, psst... admin / test");
+      alert('Usuario / contraseña no valido, psst... admin / test');
     }
   };
 
@@ -34,9 +35,9 @@ export const LoginPage: React.FC = () => {
 
       <Card
         sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
           width: 420,
           mt: 3,
           p: 2,
@@ -73,7 +74,7 @@ export const LoginPage: React.FC = () => {
             <Button
               type="submit"
               variant="contained"
-              sx={{ mt: 2.4, width: "100%" }}
+              sx={{ mt: 2.4, width: '100%' }}
             >
               Enter
             </Button>
