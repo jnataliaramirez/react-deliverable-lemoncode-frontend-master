@@ -1,17 +1,17 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { App } from "./App";
-import CssBaseline from "@mui/material/CssBaseline";
-import Container from "@mui/material/Container";
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { App } from './app';
+import CssBaseline from '@mui/material/CssBaseline';
+import { CenterLayout } from '@/layouts';
 
-const container = document.getElementById("root");
+const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
   <React.Fragment>
     <CssBaseline />
-    <Container maxWidth="lg" sx={{ paddingTop: 4 , paddingBottom: 4}}>
+    <CenterLayout>
       <App />
-    </Container>
+    </CenterLayout>
   </React.Fragment>
 );
