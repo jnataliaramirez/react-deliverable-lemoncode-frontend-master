@@ -7,3 +7,7 @@ export interface MemberEntity {
 export interface Members {
   members: MemberEntity[];
 }
+
+export const  createMembersFirst = (): Members => ({
+  members: [],
+});

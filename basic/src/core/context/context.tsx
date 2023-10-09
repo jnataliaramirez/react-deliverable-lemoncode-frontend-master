@@ -1,28 +1,29 @@
-import React, { ReactNode } from "react";
-import { MemberEntity, Members } from "./members.vm";
-import { Organization, createOrganizationFirstName } from "./organization.vm";
-import { Page, Pagination } from "./pagination.vm";
-
+import React, { ReactNode } from 'react';
+import { Pagination, createPaginationFirst } from './pagination.vm';
+import { Members, createMembersFirst } from './members.vm';
+import { Organization, createOrganizationFirst } from './organization.vm';
 
 interface Context extends Organization, Members, Pagination {
   setOrganization: (value: Organization) => void;
-  setMembers: (value: MemberEntity[]) => void;
-  setPag: (value: Page) => void; 
+  setMembers: (value: Members) => void;
+  setPag: (value: Pagination) => void;
 }
 
 export const MyContext = React.createContext<Context>({
-  organization: "",
-  setOrganization: (value) => {},
+  organization: '',
+  setOrganization: () => {},
+
   members: [],
-  setMembers: (value) => {},
-  pageSize: 0,
+  setMembers: () => {},
+  
   pag: {
     page: 1,
     count: 0,
     from: 0,
     to: 0,
+    pageSize: 0,
   },
-  setPag(value) {},
+  setPag() {},
 });
 
 interface MyContextProviderProps {
@@ -30,27 +31,22 @@ interface MyContextProviderProps {
 }
 
 export const MyContextProvider: React.FC<MyContextProviderProps> = (props) => {
-  const [organization, setOrganization] = React.useState<Organization>(createOrganizationFirstName());
+  const [organization, setOrganization] = React.useState<Organization>(
+    createOrganizationFirst()
+  );
 
-  const [members, setMembers] = React.useState<MemberEntity[]>([]);
+  const [members, setMembers] = React.useState<Members>(createMembersFirst());
 
-  const pageSize: number = 6;
-  const [pag, setPag] = React.useState<Pagination>({
-    page: 1,
-    count: 0,
-    from: 0,
-    to: pageSize,
-  });
+  const [pag, setPag] = React.useState<Pagination>(createPaginationFirst());
 
   return (
     <MyContext.Provider
       value={{
         organization: organization.organization,
         setOrganization,
-        members,
+        members: members.members,
         setMembers,
-        pageSize,
-        pag,
+        pag: pag.pag,
         setPag,
       }}
     >

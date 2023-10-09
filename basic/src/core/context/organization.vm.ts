@@ -2,6 +2,6 @@ export interface Organization {
   organization: string;
 }
 
-export const createOrganizationFirstName = () : Organization => ({
-  organization: "microsoft",
+export const createOrganizationFirst = () : Organization => ({
+  organization: "lemoncode",
 });

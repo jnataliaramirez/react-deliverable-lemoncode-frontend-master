@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 import { MyContext } from '../core/context/context';
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 
 export const ListPagination: React.FC = () => {
   const myContext = React.useContext(MyContext);
-  const pageSize = myContext.pageSize;
+  const pageSize = myContext.pag.pageSize;
   const numberPagination = myContext.pag;
   const setNumberPagination = myContext.setPag;
 
@@ -18,10 +18,12 @@ export const ListPagination: React.FC = () => {
     const to = (page - 1) * pageSize + pageSize;
 
     setNumberPagination({
-      ...numberPagination,
-      page: page,
-      from: from,
-      to: to,
+      pag: {
+        ...numberPagination,
+        page: page,
+        from: from,
+        to: to,
+      },
     });
   };
 

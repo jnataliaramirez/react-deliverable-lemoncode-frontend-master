@@ -3,9 +3,13 @@ export interface Page {
   count: number;
   from: number;
   to: number;
+  pageSize: number;
 }
 
 export interface Pagination {
-  pageSize: number;
   pag: Page;
 }
+
+export const createPaginationFirst = (): Pagination => ({
+  pag: { page: 1, count: 0, from: 0, to: 6, pageSize: 6 },
+});

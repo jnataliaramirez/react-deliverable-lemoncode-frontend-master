@@ -11,7 +11,7 @@ export const Searcher: React.FC = () => {
   const handleKeypress = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     if (ev.keyCode === 13) {
       const inputElement = ev.target as HTMLInputElement;
-      setOrganization(inputElement.value);
+      setOrganization({organization: inputElement.value});
     }
   };
 
@@ -21,7 +21,7 @@ export const Searcher: React.FC = () => {
     const organizationInput = formElement.elements.namedItem(
       "organization"
     ) as HTMLInputElement;
-    setOrganization(organizationInput.value);
+    setOrganization({organization: organizationInput.value});
   };
 
   return (
