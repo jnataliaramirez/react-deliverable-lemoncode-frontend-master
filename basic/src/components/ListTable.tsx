@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MyContext } from '../core/context/context';
+import { MyContext } from '@/core/context';
 import { routes } from 'core';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';

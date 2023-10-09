@@ -1,5 +1,5 @@
 import React from 'react';
-import { MyContext } from '../core/context/context';
+import { MyContext } from '@/core/context';
 import { getMembers } from '../api';
 import { ListPagination } from '../components/ListPagination';
 import { Searcher } from '../components/Searcher';

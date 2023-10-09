@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { MemberEntity, MyContext } from '../core/context/context';
+import { MyContext, MemberEntity } from '@/core/context';
 import { routes } from 'core';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
