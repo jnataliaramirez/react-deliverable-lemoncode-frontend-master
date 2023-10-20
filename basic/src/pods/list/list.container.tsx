@@ -1,15 +1,12 @@
 import React from 'react';
+import { getMembers } from '@/api';
 import { MyContext } from '@/core';
-import { getMembers } from '../api';
-import { ListPagination } from '../components/ListPagination';
-import { Searcher } from '../components/Searcher';
-import { ListTable } from '../components/ListTable';
-import { Title } from '../components/Title';
-import { Footer } from '../components/Footer';
+import { ListComponent } from './list.component';
 
-export const ListPage: React.FC = () => {
+export const ListContainer: React.FC = () => {
   const myContext = React.useContext(MyContext);
   const organization = myContext.organization;
+  const members = myContext.members;
   const setMembers = myContext.setMembers;
   const numberPagination = myContext.pag;
   const setNumberPagination = myContext.setPag;
@@ -27,13 +24,5 @@ export const ListPage: React.FC = () => {
     fetchMembers(organization);
   }, [organization, numberPagination.from, numberPagination.to]);
 
-  return (
-    <>
-      <Title>Organization list: {organization}</Title>
-      <Searcher />
-      <ListPagination />
-      <ListTable />
-      <Footer />
-    </>
-  );
+  return <ListComponent members={members} />;
 };

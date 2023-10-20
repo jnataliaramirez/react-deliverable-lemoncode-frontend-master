@@ -11,8 +11,8 @@ interface Props {
 export const LoginComponent: React.FC<Props> = (props) => {
   const { onLogin } = props;
 
-  const [username, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [username, setUsername] = React.useState<string>('');
+  const [password, setPassword] = React.useState<string>('');
 
   const handleNavigation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
