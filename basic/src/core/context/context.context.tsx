@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Pagination, createPaginationFirst } from './pagination.vm';
 import { Members, createMembersFirst } from './members.vm';
 import { Organization, createOrganizationFirst } from './organization.vm';
+import { MyContextProviderProps } from '../types';
 
 interface Context extends Organization, Members, Pagination {
   setOrganization: (value: Organization) => void;
@@ -26,9 +27,6 @@ export const MyContext = React.createContext<Context>({
   setPag() {},
 });
 
-interface MyContextProviderProps {
-  children: ReactNode;
-}
 
 export const MyContextProvider: React.FC<MyContextProviderProps> = (props) => {
   const [organization, setOrganization] = React.useState<Organization>(
