@@ -1,10 +1,12 @@
 import React from 'react';
-import { MyContext } from '@/core';
 import { TitleComponent } from './title.component';
 
-export const TitleContainer: React.FC = () => {
-  const myContext = React.useContext(MyContext);
-  const organization = myContext.organization;
+interface Props {
+  children: React.ReactNode;
+}
 
-  return <TitleComponent> Organization list: {organization} </TitleComponent>;
+export const TitleContainer: React.FC<Props> = (props) => {
+  const { children } = props;
+
+  return <TitleComponent> {children} </TitleComponent>;
 };
