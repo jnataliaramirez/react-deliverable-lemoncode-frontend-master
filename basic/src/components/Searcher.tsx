@@ -1,5 +1,5 @@
 import React from "react";
-import { MyContext } from '@/core/context';
+import { MyContext } from '@/core';
 import { Button, TextField } from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 

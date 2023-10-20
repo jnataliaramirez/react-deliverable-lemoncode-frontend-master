@@ -1,5 +1,5 @@
 import React from 'react';
-import { MyContextProvider } from '@/core/context';
+import { MyContextProvider } from '@/core';
 import { RouterComponent } from './core';
 
 export const App = () => {

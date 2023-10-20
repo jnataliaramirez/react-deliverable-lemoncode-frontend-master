@@ -1,5 +1,5 @@
 import React from 'react';
-import { MyContextProviderProps } from '../types';
+import { MyContextProviderProps } from '../types/type.context';
 import { UserProfile, firstProfileCreate } from './profile.vm';
 
 interface ProfileContext extends UserProfile {
