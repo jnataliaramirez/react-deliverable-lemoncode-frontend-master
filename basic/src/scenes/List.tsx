@@ -2,9 +2,9 @@ import React from 'react';
 import { ListContainer } from '@/pods/list';
 import { MyContext } from '@/core';
 import { Title } from '@/components/Title';
-import { Footer } from '@/components/Footer';
 import { Searcher } from '@/components/Searcher';
 import { ListPagination } from '@/components/ListPagination';
+import { FooterContainer } from '@/pods/footer';
 
 export const ListPage: React.FC = () => {
   const myContext = React.useContext(MyContext);
@@ -16,7 +16,7 @@ export const ListPage: React.FC = () => {
       <Searcher />
       <ListPagination />
       <ListContainer />
-      <Footer />
+      <FooterContainer />
     </>
   );
 };
