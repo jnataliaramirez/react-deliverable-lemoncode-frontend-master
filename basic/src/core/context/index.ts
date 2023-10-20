@@ -1,2 +1,2 @@
 export * from './context.context';
-export { MemberEntity } from './members.vm'
+export * from './members.vm';
