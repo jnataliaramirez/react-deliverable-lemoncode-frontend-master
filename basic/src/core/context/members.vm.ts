@@ -8,6 +8,6 @@ export interface Members {
   members: MemberEntity[];
 }
 
-export const  createMembersFirst = (): Members => ({
+export const firstMembersCreate = (): Members => ({
   members: [],
 });

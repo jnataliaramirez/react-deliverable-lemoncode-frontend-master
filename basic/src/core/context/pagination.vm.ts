@@ -10,6 +10,6 @@ export interface Pagination {
   pag: Page;
 }
 
-export const createPaginationFirst = (): Pagination => ({
+export const firstPaginationCreate = (): Pagination => ({
   pag: { page: 1, count: 0, from: 0, to: 6, pageSize: 6 },
 });

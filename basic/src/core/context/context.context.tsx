@@ -1,7 +1,7 @@
 import React from 'react';
-import { Pagination, createPaginationFirst } from './pagination.vm';
-import { Members, createMembersFirst } from './members.vm';
-import { Organization, createOrganizationFirst } from './organization.vm';
+import { Pagination, firstPaginationCreate } from './pagination.vm';
+import { Members, firstMembersCreate } from './members.vm';
+import { Organization, firstOrganizationCreate } from './organization.vm';
 import { MyContextProviderProps } from '../types/type.context';
 
 interface Context extends Organization, Members, Pagination {
@@ -29,12 +29,12 @@ export const MyContext = React.createContext<Context>({
 
 export const MyContextProvider: React.FC<MyContextProviderProps> = (props) => {
   const [organization, setOrganization] = React.useState<Organization>(
-    createOrganizationFirst()
+    firstOrganizationCreate()
   );
 
-  const [members, setMembers] = React.useState<Members>(createMembersFirst());
+  const [members, setMembers] = React.useState<Members>(firstMembersCreate());
 
-  const [pag, setPag] = React.useState<Pagination>(createPaginationFirst());
+  const [pag, setPag] = React.useState<Pagination>(firstPaginationCreate());
 
   return (
     <MyContext.Provider
