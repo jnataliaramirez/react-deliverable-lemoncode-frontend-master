@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { MyContext, MemberEntity } from '@/core';
+import { Link } from 'react-router-dom';
 import { routes } from 'core';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -9,15 +8,16 @@ import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export const MemberCard: React.FC = () => {
-  const { id } = useParams();
-  const myContext = React.useContext(MyContext);
-  const members = myContext.members;
+interface Props {
+  member: {
+    avatar_url: string;
+    id: string;
+    login: string;
+  };
+}
 
-  const memberFind = (id: string): MemberEntity =>
-    members.find((member) => member.login === id);
-
-  const member = memberFind(id);
+export const CardComponent: React.FC<Props> = (props) => {
+  const { member } = props;
 
   return (
     <>
@@ -29,7 +29,7 @@ export const MemberCard: React.FC = () => {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            {id}
+            {member.login} - id: {member.id} 
           </Typography>
         </CardContent>
       </Card>

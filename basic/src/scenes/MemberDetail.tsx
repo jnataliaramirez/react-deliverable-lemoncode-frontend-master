@@ -1,7 +1,7 @@
 import React from "react";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
-// import { Title } from "../components/Title";
-import { MemberCard } from "../components/MemberCard";
+import { CardContainer } from '@/pods/card';
+import { TitleContainer } from '@/pods/title';
 
 export const DetailPage: React.FC = () => {
   return (
@@ -12,9 +12,9 @@ export const DetailPage: React.FC = () => {
       alignItems="center"
       gap="2rem"
     >
-      {/* <Title>User Detail</Title> */}
+      <TitleContainer>User Detail</TitleContainer>
 
-      <MemberCard />
+      <CardContainer />
     </Grid2>
   );
 };
