@@ -13,8 +13,6 @@ export const CardContainer = () => {
 
   const member = memberFind(id);
 
-  console.log('member', member)
-
   const newMember = {
     avatar_url: member.avatar_url,
     id: member.id,

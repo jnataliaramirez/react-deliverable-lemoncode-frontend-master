@@ -1,10 +1,10 @@
 import React from 'react';
 import { ListContainer } from '@/pods/list';
-import { Searcher } from '@/components/Searcher';
 import { FooterContainer } from '@/pods/footer';
 import { TitleContainer } from '@/pods/title';
 import { PaginationContainer } from '@/pods/pagination';
 import { MyContext } from '@/core';
+import { SearcherContainer } from '@/pods/seacher/seacher.container';
 
 export const ListPage: React.FC = () => {
   const myContext = React.useContext(MyContext);
@@ -13,7 +13,7 @@ export const ListPage: React.FC = () => {
   return (
     <>
       <TitleContainer> Organization list: {organization} </TitleContainer>
-      <Searcher />
+      <SearcherContainer />
       <PaginationContainer />
       <ListContainer />
       <FooterContainer />
