@@ -1,7 +1,7 @@
 import React from 'react';
-import { getMembers } from '@/api';
 import { MyContext } from '@/core';
 import { ListComponent } from './list.component';
+import { getMemberCollection } from './list.repository';
 
 export const ListContainer: React.FC = () => {
   const myContext = React.useContext(MyContext);
@@ -12,16 +12,18 @@ export const ListContainer: React.FC = () => {
   const setNumberPagination = myContext.setPag;
 
   React.useEffect(() => {
-    const fetchMembers = async (organization: string) => {
-      const membersRes = await getMembers(organization);
+    getMemberCollection(organization).then((memberCollection) => {
       setNumberPagination({
-        pag: { ...numberPagination, count: membersRes.length },
+        pag: { ...numberPagination, count: memberCollection.length },
       });
+
       setMembers({
-        members: membersRes.slice(numberPagination.from, numberPagination.to),
+        members: memberCollection.slice(
+          numberPagination.from,
+          numberPagination.to
+        ),
       });
-    };
-    fetchMembers(organization);
+    });
   }, [organization, numberPagination.from, numberPagination.to]);
 
   return <ListComponent members={members} />;

@@ -1,8 +1,4 @@
-export interface MemberEntity {
-  id: string;
-  login: string;
-  avatar_url: string;
-}
+import { MemberEntity } from "@/pods/list/list.vm";
 
 export interface Members {
   members: MemberEntity[];
