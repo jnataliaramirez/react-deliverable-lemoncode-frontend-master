@@ -3,21 +3,29 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import { Login, createEmptyLogin } from './login.vm';
 
 interface Props {
-  onLogin: (username: string, password: string) => void;
+  onLogin: (login: Login) => void;
 }
 
 export const LoginComponent: React.FC<Props> = (props) => {
   const { onLogin } = props;
 
-  const [username, setUsername] = React.useState<string>('');
-  const [password, setPassword] = React.useState<string>('');
+  const [login, setLogin] = React.useState<Login>(createEmptyLogin);
 
   const handleNavigation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onLogin(username, password);
+    onLogin(login);
   };
+
+  const updateFieldValue =
+    (name: keyof Login) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setLogin({
+        ...login,
+        [name]: e.target.value,
+      });
+    };
 
   return (
     <Card
@@ -37,8 +45,8 @@ export const LoginComponent: React.FC<Props> = (props) => {
               <TextField
                 id="user"
                 label="User:"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={login.username}
+                onChange={updateFieldValue('username')}
                 variant="standard"
                 margin="dense"
                 fullWidth
@@ -49,8 +57,8 @@ export const LoginComponent: React.FC<Props> = (props) => {
                 id="password"
                 label="Password:"
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={login.password}
+                onChange={updateFieldValue('password')}
                 variant="standard"
                 margin="dense"
                 fullWidth
